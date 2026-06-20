@@ -3,11 +3,13 @@ function App() {
 
     <div>
 
-      <h1>
+    <h1 className="font-neue font-medium">
+  Heading (Neue Haas)
+</h1>
 
-        HOME FINDER
-
-      </h1>
+<p className="font-rethink font-medium">
+  Body text (Rethink Sans)
+</p>
 
     </div>
 
