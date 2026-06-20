@@ -1,9 +1,9 @@
 function App() {
   return (
 
-    <div className="min-h-screen bg-orange-500 flex items-center justify-center">
+    <div>
 
-      <h1 className="text-white text-5xl font-bold">
+      <h1>
 
         HOME FINDER
 
