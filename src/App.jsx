@@ -1,19 +1,21 @@
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Properties from "./pages/Properties";
+
 function App() {
   return (
+    <>
+      <Navbar />
 
-    <div>
-
-    <h1 className="font-neue font-medium">
-  Heading (Neue Haas)
-</h1>
-
-<p className="font-rethink font-medium">
-  Body text (Rethink Sans)
-</p>
-
-    </div>
-
-  )
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/properties" element={<Properties />} />
+      </Routes>
+    </>
+  );
 }
 
-export default App
+export default App;
