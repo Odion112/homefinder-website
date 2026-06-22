@@ -3,11 +3,12 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Properties from "./pages/Properties";
+import VerifiedBadge from "./components/VerifiedBadge"
 
 function App() {
   return (
     <>      
-
+<VerifiedBadge />
     <Navbar />
 
       <Routes>
