@@ -4,10 +4,10 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Properties from "./pages/Properties";
 
+
 function App() {
   return (
     <>      
-
     <Navbar />
 
       <Routes>
