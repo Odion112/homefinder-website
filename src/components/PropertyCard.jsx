@@ -63,8 +63,8 @@ export default function PropertyCard({
           </div>
 
           <h3 className="whitespace-nowrap text-[26px] font-NeueHaasDisplay text-[#0E0D0C] leading-tight">
-  <span className="font-bold">₦4.5M</span>
-  <span className="font-medium">/yr</span>
+  <span className="font-neue font-medium">₦4.5M</span>
+  <span className="font-neue font-roman">/yr</span>
 </h3>
         </div>
 
