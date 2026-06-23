@@ -3,11 +3,14 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Properties from "./pages/Properties";
+import PropertyCard from "./components/PropertyCard";
 
 
 function App() {
   return (
     <>      
+<PropertyCard />
+
     <Navbar />
 
       <Routes>
