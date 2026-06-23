@@ -7,11 +7,12 @@ import PropertyCard from "./components/PropertyCard";
 import PropertyImage from "./assets/images/property-image.svg";
 import HomePagePropertyCard from "./components/HomePagePropertyCard";
 import Footer from "./components/Footer";
+import EmptyState from "./components/EmptyState";
 
 function App() {
   return (
     <>
-    <Footer />
+  
 
       <Routes>
         <Route path="/" element={<Home />} />
