@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Properties from "./pages/Properties";
 import PropertyCard from "./components/PropertyCard";
 
+
 function App() {
   return (
     <>      

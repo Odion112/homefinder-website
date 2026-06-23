@@ -11,7 +11,7 @@ function Navbar() {
   //  To see the different states of the navbar, change the const role to  "guest", "seeker" or "owner". We will replace these with real auth data later.
 
   const isLoggedIn = true;
-  const role = "guest"; // "guest" | "seeker" | "owner"
+  const role = "owner"; // "guest" | "seeker" | "owner"
   const user = {
     initials: "JD",     // shown when no photo is available
     avatarUrl: avatar,  
@@ -64,19 +64,12 @@ function Navbar() {
         
         <div className="h-full flex items-center gap-14">
 
-          {/* GUEST LINKS: sees About + Properties */}
+          {/* GUEST LINKS: sees Properties */}
           {role === "guest" && (
             <>
-              <Link to="/about"
-                className={`h-full flex items-center text-[18px] font-rethink font-regular
-                  ${isCurrentPage("/about") ? "border-b-[3px] border-accent font-medium" : ""}
-                `}>
-                About
-              </Link>
-
               <Link to="/properties"
                 className={`h-full flex items-center text-[18px] font-rethink font-regular
-                  ${isCurrentPage("/properties") ? "border-b-[3px] border-accent font-medium" : ""}
+                  ${isCurrentPage("/about") ? "border-b-[3px] border-accent font-medium" : ""}
                 `}>
                 Properties
               </Link>
@@ -94,15 +87,6 @@ function Navbar() {
                 Properties
 
               </Link>
-
-              <Link to="/saved-properties"
-                className={`h-full flex items-center text-[18px] font-rethink font-regular
-                  ${isCurrentPage("/saved-properties") ? "border-b-[3px] border-accent font-medium" : ""}
-                `}>
-
-                Saved Properties
-
-              </Link>
             </>
           )}
 
@@ -115,15 +99,6 @@ function Navbar() {
                 `}>
 
                 Properties
-
-              </Link>
-
-              <Link to="/saved-properties"
-                className={`h-full flex items-center text-[18px] font-rethink font-regular
-                  ${isCurrentPage("/saved-properties") ? "border-b-[3px] border-accent font-medium" : ""}
-                `}>
-
-                Saved Properties
 
               </Link>
 
