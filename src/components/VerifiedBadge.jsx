@@ -7,25 +7,24 @@ export default function VerifiedBadge() {
         inline-flex
         items-center
         justify-center
-        gap-2
+        gap-1.5
         bg-[#BAFF7B]
-        p-3
+        w-[80px]
+        h-[26px]
         rounded-full
-        font-NeueHaasDisplay
+        font-neue
         font-medium
         text-[#0E0D0C]
-        text-[16px]
-        w-28
-        h-10
+        text-[12px]
+        leading-none
       "
     >
       <img
         src={VerifiedIcon}
         alt=""
-        className="w-[18px] h-[18px]"
+        style={{ width: 16, height: 16, display: "block" }}
       />
-
-      <span>Verified</span>
+      <span style={{ lineHeight: 1 }}>Verified</span>
     </div>
   );
 }
