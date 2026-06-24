@@ -12,13 +12,35 @@ import EmptyState from "./components/EmptyState";
 import MyListingsCard from "./components/MyListingsCard";
 import Dropdown from "./components/Dropdown";
 import LandlordCard from "./components/LandlordCard";
+import { IoFilterOutline } from "react-icons/io5";
+import Button from "./components/Button"
+import SearchBar from "./components/SearchBar"
 
 function App() {
   const [status, setStatus] = useState("");
+  const [query, setQuery] = useState("");
+
+  const handleSearch = (q) => {
+    console.log("searching:", q);
+  };
 
   return (
     <>
-   <LandlordCard />
+      <SearchBar
+        value={query}
+        onChange={setQuery}
+        placeholder="Search by area, e.g. Lekki, Yaba..."
+        onSearch={handleSearch}
+        className="!w-100"
+      />
+
+      <Button
+        variant="outline"
+        iconLeft={<IoFilterOutline size={16} />}
+        className="!w-auto !px-4 shrink-0"
+      >
+        Filter
+      </Button>
 
       <Routes>
         <Route path="/" element={<Home />} />
