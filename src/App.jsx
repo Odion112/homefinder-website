@@ -5,6 +5,7 @@ import Input from "./components/Input";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Properties from "./pages/Properties";
+import ConfirmDialog from "./components/ConfirmDialog";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -28,6 +29,7 @@ function App() {
           placeholder="Enter your email"
           onChange={handleChange}
         />
+        <ConfirmDialog />
       </div>
 
       <Routes>
