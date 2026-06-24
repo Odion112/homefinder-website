@@ -11,20 +11,14 @@ import Footer from "./components/Footer";
 import EmptyState from "./components/EmptyState";
 import MyListingsCard from "./components/MyListingsCard";
 import Dropdown from "./components/Dropdown";
+import LandlordCard from "./components/LandlordCard";
 
 function App() {
   const [status, setStatus] = useState("");
 
   return (
     <>
-      <div className="p-8 max-w-sm">
-        <Dropdown
-          options={["Newest", "Latests", "Old"]}
-          value={status}
-          onChange={setStatus}
-          placeholder="Select status"
-        />
-      </div>
+   <LandlordCard />
 
       <Routes>
         <Route path="/" element={<Home />} />
