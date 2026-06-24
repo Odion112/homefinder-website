@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -9,19 +10,21 @@ import HomePagePropertyCard from "./components/HomePagePropertyCard";
 import Footer from "./components/Footer";
 import EmptyState from "./components/EmptyState";
 import MyListingsCard from "./components/MyListingsCard";
+import Dropdown from "./components/Dropdown";
 
 function App() {
+  const [status, setStatus] = useState("");
+
   return (
     <>
-  <MyListingsCard
-  image={PropertyImage} 
-  title="4 Bedroom Duplex"
-   location="Lekki Phase 1, Lagos"
-  price="7.5M"
-  status="published"
-  onMoreClick={() => setDropdownOpen(true)}
-/>
-
+      <div className="p-8 max-w-sm">
+        <Dropdown
+          options={["Newest", "Latests", "Old"]}
+          value={status}
+          onChange={setStatus}
+          placeholder="Select status"
+        />
+      </div>
 
       <Routes>
         <Route path="/" element={<Home />} />
