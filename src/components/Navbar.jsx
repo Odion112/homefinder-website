@@ -34,16 +34,16 @@ function Navbar() {
       }
     }
 
-    // Listen for clicks on the whole page
+  
     document.addEventListener("mousedown", handleClickOutside);
 
-    // Cleanup: stop listening when the component is removed
+  
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
-  // To check if a link is the current page. Returns true/false is used to add the orange underline
+
   function isCurrentPage(path) {
     return location.pathname === path;
   }
@@ -166,7 +166,7 @@ function Navbar() {
             </div>
           )}
 
-          {/* List Property button — always visible */}
+          {/* List Property button */}
           <Link to="/list-property"
             className="bg-accent text-surface w-[169px] h-[46px] rounded-xs text-[18px] font-rethink font-regular flex items-center justify-center">
 
