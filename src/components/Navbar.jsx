@@ -2,7 +2,7 @@ import logo from "../assets/images/logo.svg";
 import avatar from "../assets/images/avatar.svg";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
-//import AccountDropdown from "./AccountDropdown";
+import AccountDropdown from "./AccountDropdown";
 
 function Navbar() {
   const location = useLocation();
@@ -11,22 +11,19 @@ function Navbar() {
   //  To see the different states of the navbar, change the const role to  "guest", "seeker" or "owner". We will replace these with real auth data later.
 
   const isLoggedIn = true;
-  const role = "owner"; // "guest" | "seeker" | "owner"
+  const role = "seeker"; // "guest" | "seeker" | "owner"
   const user = {
-    initials: "JD",     // shown when no photo is available
+    initials: "JD",     
     avatarUrl: avatar,  
     name: "John Doe",
     email: "john@example.com",
+     phone: "+234 8908 8746",
   };
 
 
-  // Controls whether the dropdown is open or closed
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  // This ref is attached to the avatar button area so we can detect clicks outside it
   const avatarRef = useRef(null);
 
-  // Close the dropdown when the user clicks anywhere outside the avatar
   useEffect(() => {
     function handleClickOutside(event) {
       if (avatarRef.current && !avatarRef.current.contains(event.target)) {
@@ -138,7 +135,7 @@ function Navbar() {
       onClick={() => setDropdownOpen(!dropdownOpen)}
       className="focus:outline-none cursor-pointer"
     >
-      {/* PROPERTY SEEKER: always shows initials in a circle */}
+      {/* PROPERTY SEEKER: shows thier intials */}
       {role === "seeker" && (
         <div className="w-[48px] h-[48px] rounded-full bg-gray-200 flex items-center justify-center text-[16px] font-rethink font-medium text-EEEDF6">
           {user.initials}
@@ -158,10 +155,17 @@ function Navbar() {
               {/* ACCOUNT DROPDOWN COMPONENT */}
 
               {/* onClose — closes the dropdown when user clicks any option */}
+             {console.log("user object:", JSON.stringify(user))}
               {dropdownOpen && (
-                //<AccountDropdown onClose={() => setDropdownOpen(false)} user={user}/>
-            <div> Dropdown component will be added here</div>
-              )}
+  <>
+    {console.log("user being passed:", user)}
+    <AccountDropdown
+      onClose={() => setDropdownOpen(false)}
+      user={user}
+      role={role}
+    />
+  </>
+)}
 
             </div>
           )}

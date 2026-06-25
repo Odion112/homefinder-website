@@ -14,25 +14,15 @@ import Dropdown from "./components/Dropdown";
 import LandlordCard from "./components/LandlordCard";
 import { IoFilterOutline } from "react-icons/io5";
 import Button from "./components/Button"
-import SearchBar from "./components/SearchBar"
 import AccountDropdown from "./components/AccountDropdown";
 
 function App() {
   const [status, setStatus] = useState("");
-  const [query, setQuery] = useState("");
-
-  const handleSearch = (q) => {
-    console.log("searching:", q);
-  };
+  
 
   return (
     <>
-     <AccountDropdown />
-  
-    
-
-   <LandlordCard />
-
+<Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />

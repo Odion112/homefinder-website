@@ -1,27 +1,22 @@
 import { AiOutlineLogout } from "react-icons/ai";
+/* import { useState } from "react";
+import ConfirmDialog from "./ConfirmDialog";
+*/
 
-/**
- * AccountDropdown
- *
- * Props:
- *  - user: { name, email, phone, avatarUrl, initials }
- *  - role: "seeker" | "owner"
- *  - onClose: () => void   — called when user clicks Logout (or any close action)
- */
+
 function AccountDropdown({ user, role, onClose }) {
+  if (!user) return null;
+
   function handleLogout() {
-    // TODO: wire up real logout logic
     onClose();
   }
 
   return (
     <div className="absolute right-0 top-[calc(100%+12px)] w-[280px] bg-white rounded-sm shadow-[0px_4px_24px_rgba(0,0,0,0.12)] z-50">
 
-      {/* User info */}
-      <div className="flex items-center gap-3 px-5 py-5">
+      <div className="flex items-center gap-4 px-5 py-5">
 
-        {/* Avatar */}
-        {role === "owner" && user.avatarUrl ? (
+        {role === "owner" ? (
           <img
             src={user.avatarUrl}
             alt={user.name}
@@ -33,37 +28,46 @@ function AccountDropdown({ user, role, onClose }) {
           </div>
         )}
 
-        {/* Name / email / phone */}
         <div className="flex flex-col gap-0.5 min-w-0">
-          <p className="text-[15px] font-rethink font-semibold text-[#1A1A1A] leading-tight truncate">
+          <p className="text-[15px] font-neue font-medium text-[#0E0D0C] leading-tight truncate">
             {user.name}
           </p>
-          <p className="text-[13px] font-rethink text-[#6B6B6B] leading-tight truncate">
+          <p className="text-[13px] font-neue font-roman text-[#696262] leading-tight truncate">
             {user.email}
           </p>
           {user.phone && (
-            <p className="text-[13px] font-rethink text-[#6B6B6B] leading-tight">
+            <p className="text-[13px] font-neue font-roman text-[#696262] leading-tight">
               {user.phone}
             </p>
           )}
         </div>
       </div>
 
-      {/* Divider */}
-      <div className="h-px bg-[#E8E8E8] mx-5" />
+      <div className="h-px bg-[#C6C6C6]/20 mx-5" />
 
-      {/* Logout */}
       <div className="px-5 py-4">
         <button
-          onClick={handleLogout}
-          className="flex items-center gap-2 text-[15px] font-rethink font-medium text-red-500 hover:text-red-600 transition-colors cursor-pointer"
-        >
-          <AiOutlineLogout size={16} strokeWidth={2} />
-          Logout
-        </button>
+  onClick={handleLogout}
+  className="flex items-center gap-3 w-full px-3 h-10 rounded-xs text-[15px] font-rethink font-medium text-[#EA0000] hover:bg-[#EA0000]/6 transition-colors cursor-pointer"
+>
+  <AiOutlineLogout size={16} />
+  Logout
+</button>
       </div>
 
     </div>
+
+    /* Link to modal 
+    
+    {showConfirm && (
+        <ConfirmDialog
+          onConfirm={handleConfirmLogout}
+          onCancel={handleCancelLogout}
+        />
+      )}
+    </>
+    */
+
   );
 }
 
