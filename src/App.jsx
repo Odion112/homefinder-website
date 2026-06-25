@@ -22,7 +22,14 @@ function App() {
 
   return (
     <>
-<Navbar />
+<MyListingsCard
+  image={PropertyImage}
+  title="4 Bedroom Duplex"
+  location="Lekki Phase 1, Lagos"
+  price="7.5M"
+  status="published"
+  onAction={(type) => console.log(type)}
+/>
 
       <Routes>
         <Route path="/" element={<Home />} />
