@@ -18,19 +18,11 @@ import AccountDropdown from "./components/AccountDropdown";
 
 function App() {
   const [status, setStatus] = useState("");
-  const [query, setQuery] = useState("");
-
-  const handleSearch = (q) => {
-    console.log("searching:", q);
-  };
+  
 
   return (
     <>
-     <AccountDropdown />
-  
-    
-
-   <LandlordCard />
+<Navbar />
 
 
       <Routes>
