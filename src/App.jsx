@@ -15,6 +15,7 @@ import LandlordCard from "./components/LandlordCard";
 import { IoFilterOutline } from "react-icons/io5";
 import Button from "./components/Button"
 import AccountDropdown from "./components/AccountDropdown";
+import FilterPanel from "./components/FilterPanel";
 
 function App() {
   const [status, setStatus] = useState("");
@@ -22,14 +23,7 @@ function App() {
 
   return (
     <>
-<MyListingsCard
-  image={PropertyImage}
-  title="4 Bedroom Duplex"
-  location="Lekki Phase 1, Lagos"
-  price="7.5M"
-  status="published"
-  onAction={(type) => console.log(type)}
-/>
+<FilterPanel />
 
       <Routes>
         <Route path="/" element={<Home />} />

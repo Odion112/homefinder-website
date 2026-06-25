@@ -2,15 +2,15 @@ import { forwardRef } from "react";
 
 const Button = forwardRef(function Button(
   {
-    variant = "filled", // which style: "filled" or "outline"
-    iconOnly = false,   // true = square button with just an icon, no text
-    iconLeft,           // icon to show before the text
-    iconRight,          // icon to show after the text
-    disabled = false,   // true = button can't be clicked
-    loading = false,    // true = show a spinning loader instead of content
-    className = "",     // use this to override size, width, padding from outside
-    children,           // the text or icon inside the button
-    ...rest             // onClick and any other props we pass
+    variant = "filled", 
+    iconOnly = false,   
+    iconLeft,           
+    iconRight,          
+    disabled = false,   
+    loading = false,    
+    className = "",    
+    children,       
+    ...rest            
   },
   ref
 ) {
