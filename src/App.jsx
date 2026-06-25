@@ -14,7 +14,7 @@ import Dropdown from "./components/Dropdown";
 import LandlordCard from "./components/LandlordCard";
 import { IoFilterOutline } from "react-icons/io5";
 import Button from "./components/Button"
-import SearchBar from "./components/SearchBar"
+import AccountDropdown from "./components/AccountDropdown";
 
 function App() {
   const [status, setStatus] = useState("");
@@ -26,21 +26,12 @@ function App() {
 
   return (
     <>
-      <SearchBar
-        value={query}
-        onChange={setQuery}
-        placeholder="Search by area, e.g. Lekki, Yaba..."
-        onSearch={handleSearch}
-        className="!w-100"
-      />
+     <AccountDropdown />
+  
+    
 
-      <Button
-        variant="outline"
-        iconLeft={<IoFilterOutline size={16} />}
-        className="!w-auto !px-4 shrink-0"
-      >
-        Filter
-      </Button>
+   <LandlordCard />
+
 
       <Routes>
         <Route path="/" element={<Home />} />
