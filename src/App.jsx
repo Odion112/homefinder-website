@@ -16,6 +16,8 @@ import { IoFilterOutline } from "react-icons/io5";
 import Button from "./components/Button"
 import AccountDropdown from "./components/AccountDropdown";
 import FilterPanel from "./components/FilterPanel";
+import NotificationPopup from "./components/NotificationPopup";
+
 
 function App() {
   const [status, setStatus] = useState("");
@@ -23,6 +25,12 @@ function App() {
 
   return (
     <>
+
+<NotificationPopup
+  message="Property marked as rented"
+  onClose={() => setShowToast(false)}
+/>
+
 <FilterPanel />
 
       <Routes>
