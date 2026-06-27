@@ -1,11 +1,12 @@
-import { AiOutlineLogout } from "react-icons/ai";
-/* import { useState } from "react";
-import ConfirmDialog from "./ConfirmDialog";
-*/
-
+import { AiOutlineLogout, AiOutlineUser } from "react-icons/ai";
 
 function AccountDropdown({ user, role, onClose }) {
   if (!user) return null;
+
+  function handleProfile() {
+    onClose();
+    // TODO: navigate to profile page
+  }
 
   function handleLogout() {
     onClose();
@@ -15,7 +16,6 @@ function AccountDropdown({ user, role, onClose }) {
     <div className="absolute right-0 top-[calc(100%+12px)] w-[280px] bg-white rounded-sm shadow-[0px_4px_24px_rgba(0,0,0,0.12)] z-50">
 
       <div className="flex items-center gap-4 px-5 py-5">
-
         {role === "owner" ? (
           <img
             src={user.avatarUrl}
@@ -47,27 +47,23 @@ function AccountDropdown({ user, role, onClose }) {
 
       <div className="px-5 py-4">
         <button
-  onClick={handleLogout}
-  className="flex items-center gap-3 w-full px-3 h-10 rounded-xs text-[15px] font-rethink font-medium text-[#EA0000] hover:bg-[#EA0000]/6 transition-colors cursor-pointer"
->
-  <AiOutlineLogout size={16} />
-  Logout
-</button>
+          onClick={handleProfile}
+          className="flex items-center gap-3 w-full px-3 h-10 rounded-xs text-[15px] font-rethink font-medium text-[#0E0D0C] hover:bg-[#F5F5F5]/80 transition-colors cursor-pointer"
+        >
+          <AiOutlineUser size={16} />
+          Profile
+        </button>
+
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-3 w-full px-3 h-10 rounded-xs text-[15px] font-rethink font-medium text-[#EA0000] hover:bg-[#EA0000]/6 transition-colors cursor-pointer"
+        >
+          <AiOutlineLogout size={16} />
+          Logout
+        </button>
       </div>
 
     </div>
-
-    /* Link to modal 
-    
-    {showConfirm && (
-        <ConfirmDialog
-          onConfirm={handleConfirmLogout}
-          onCancel={handleCancelLogout}
-        />
-      )}
-    </>
-    */
-
   );
 }
 

@@ -19,7 +19,7 @@ const AmenityTag = ({ icon: Icon, label }) => {
 export default AmenityTag;
 
 
-// ─── Example usage (remove when integrating) ────────────────────────────────
+// HOW TO USE
 //
 // import { PiBolt }        from "react-icons/pi";
 // import { PiWifi }        from "react-icons/pi";

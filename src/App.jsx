@@ -1,18 +1,15 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import About from "./pages/About";
 import Properties from "./pages/Properties";
+import ProfileModal from "./components/ProfileModal";
 
 function App() {
-  const [status, setStatus] = useState("");
-  
+  const [profileOpen, setProfileOpen] = useState(false);
 
   return (
     <>
-
-
+      <ProfileModal isOpen={profileOpen} onClose={() => setProfileOpen(false)} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

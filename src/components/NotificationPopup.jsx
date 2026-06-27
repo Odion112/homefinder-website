@@ -3,7 +3,7 @@ import { RxCross2 } from "react-icons/rx";
 
 export default function NotificationPopup({ message, onClose }) {
   return (
-    <div className="flex items-center justify-between gap-3 px-4 py-3 rounded-xs bg-[#0E0D0C] w-fit max-w-sm">
+    <div className="flex items-center justify-between gap-3 px-4 py-3 rounded-xm bg-[#0E0D0C] w-fit max-w-sm">
       <div className="flex items-center gap-2">
         <IoCheckmarkCircle size={18} color="#0B8A2F" />
         <span className="text-[13px] text-white font-rethink font-regular whitespace-nowrap">
