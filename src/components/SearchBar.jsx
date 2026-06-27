@@ -52,6 +52,7 @@ export default function SearchBar({
 }
 
 
+
 // HOW TO USE
 
 
