@@ -4,20 +4,6 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Properties from "./pages/Properties";
-import PropertyCard from "./components/PropertyCard";
-import PropertyImage from "./assets/images/property-image.svg";
-import HomePagePropertyCard from "./components/HomePagePropertyCard";
-import Footer from "./components/Footer";
-import EmptyState from "./components/EmptyState";
-import MyListingsCard from "./components/MyListingsCard";
-import Dropdown from "./components/Dropdown";
-import LandlordCard from "./components/LandlordCard";
-import { IoFilterOutline } from "react-icons/io5";
-import Button from "./components/Button"
-import AccountDropdown from "./components/AccountDropdown";
-import FilterPanel from "./components/FilterPanel";
-import NotificationPopup from "./components/NotificationPopup";
-
 
 function App() {
   const [status, setStatus] = useState("");
@@ -26,12 +12,6 @@ function App() {
   return (
     <>
 
-<NotificationPopup
-  message="Property marked as rented"
-  onClose={() => setShowToast(false)}
-/>
-
-<FilterPanel />
 
 
       <Routes>
