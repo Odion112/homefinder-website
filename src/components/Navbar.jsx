@@ -8,7 +8,6 @@ import ProfileModal from "./ProfileModal";
 function Navbar() {
   const location = useLocation();
 
-  const isLoggedIn = true;
   const role = "owner"; // "guest" | "seeker" | "owner"
   const user = {
     initials: "JD",
@@ -49,7 +48,6 @@ function Navbar() {
           {/* CENTER NAV LINKS */}
           <div className="h-full flex items-center gap-14">
 
-            {/* GUEST LINKS */}
             {role === "guest" && (
               <Link to="/properties"
                 className={`h-full flex items-center text-[18px] font-rethink font-regular
@@ -59,7 +57,6 @@ function Navbar() {
               </Link>
             )}
 
-            {/* SEEKER LINKS */}
             {role === "seeker" && (
               <Link to="/properties"
                 className={`h-full flex items-center text-[18px] font-rethink font-regular
@@ -69,7 +66,6 @@ function Navbar() {
               </Link>
             )}
 
-            {/* OWNER LINKS */}
             {role === "owner" && (
               <>
                 <Link to="/properties"
@@ -91,14 +87,12 @@ function Navbar() {
           {/* RIGHT SIDE */}
           <div className="flex items-center gap-8">
 
-            {/* Guest: Sign in link */}
             {role === "guest" && (
               <Link to="/signin" className="text-[18px] font-rethink font-regular">
                 Sign in
               </Link>
             )}
 
-            {/* Logged in: Avatar + Dropdown */}
             {(role === "seeker" || role === "owner") && (
               <div className="relative" ref={avatarRef}>
                 <button
@@ -134,7 +128,6 @@ function Navbar() {
               </div>
             )}
 
-            {/* List Property button */}
             <Link to="/list-property"
               className="bg-accent text-surface w-[169px] h-[46px] rounded-xs text-[18px] font-rethink font-regular flex items-center justify-center">
               List Property
@@ -144,7 +137,7 @@ function Navbar() {
         </div>
       </nav>
 
-      {/* Profile Modal */}
+      {/* ProfileModal lives here so it survives dropdown unmounting */}
       <ProfileModal
         isOpen={profileOpen}
         onClose={() => setProfileOpen(false)}
