@@ -137,7 +137,7 @@ function Navbar() {
         </div>
       </nav>
 
-      {/* ProfileModal */}
+      {/* Profile Modal */}
       <ProfileModal
         isOpen={profileOpen}
         onClose={() => setProfileOpen(false)}
