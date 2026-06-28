@@ -9,7 +9,7 @@ function Navbar() {
   const location = useLocation();
 
   const isLoggedIn = true;
-  const role = "seeker"; // "guest" | "seeker" | "owner"
+  const role = "owner"; // "guest" | "seeker" | "owner"
   const user = {
     initials: "JD",
     avatarUrl: avatar,
@@ -29,9 +29,7 @@ function Navbar() {
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   function isCurrentPage(path) {
@@ -104,11 +102,12 @@ function Navbar() {
             {(role === "seeker" || role === "owner") && (
               <div className="relative" ref={avatarRef}>
                 <button
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  onClick={() => setDropdownOpen((prev) => !prev)}
+                  onMouseEnter={() => setDropdownOpen(true)}
                   className="focus:outline-none cursor-pointer"
                 >
                   {role === "seeker" && (
-                    <div className="w-[48px] h-[48px] rounded-full bg-gray-200 flex items-center justify-center text-[16px] font-rethink font-medium text-EEEDF6">
+                    <div className="w-[48px] h-[48px] rounded-full bg-gray-200 flex items-center justify-center text-[16px] font-rethink font-medium text-gray-600">
                       {user.initials}
                     </div>
                   )}
