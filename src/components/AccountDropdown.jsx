@@ -3,15 +3,23 @@ import { AiOutlineLogout, AiOutlineUser } from "react-icons/ai";
 import ConfirmDialog from "./ConfirmDialog";
 import ProfileModal from "./ProfileModal";
 
+<<<<<<< HEAD
 function AccountDropdown({ user, role, onClose }) {
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
 
+=======
+function AccountDropdown({ user, role, onClose, onProfileOpen }) {
+>>>>>>> origin/main
   if (!user) return null;
 
   function handleProfile() {
     onClose();
+<<<<<<< HEAD
     setShowProfile(true);
+=======
+    onProfileOpen();
+>>>>>>> origin/main
   }
 
   function handleLogoutConfirm() {
