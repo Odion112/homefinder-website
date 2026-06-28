@@ -2,182 +2,148 @@ import logo from "../assets/images/logo.svg";
 import avatar from "../assets/images/avatar.svg";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
-//import AccountDropdown from "./AccountDropdown";
+import AccountDropdown from "./AccountDropdown";
+import ProfileModal from "./ProfileModal";
 
 function Navbar() {
   const location = useLocation();
 
-  
-  //  To see the different states of the navbar, change the const role to  "guest", "seeker" or "owner". We will replace these with real auth data later.
-
-  const isLoggedIn = true;
   const role = "owner"; // "guest" | "seeker" | "owner"
   const user = {
-    initials: "JD",     // shown when no photo is available
-    avatarUrl: avatar,  
+    initials: "JD",
+    avatarUrl: avatar,
     name: "John Doe",
     email: "john@example.com",
+    phone: "+234 8908 8746",
   };
 
-
-  // Controls whether the dropdown is open or closed
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  // This ref is attached to the avatar button area so we can detect clicks outside it
+  const [profileOpen, setProfileOpen] = useState(false);
   const avatarRef = useRef(null);
 
-  // Close the dropdown when the user clicks anywhere outside the avatar
   useEffect(() => {
     function handleClickOutside(event) {
       if (avatarRef.current && !avatarRef.current.contains(event.target)) {
         setDropdownOpen(false);
       }
     }
-
-  
     document.addEventListener("mousedown", handleClickOutside);
-
-  
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
 
   function isCurrentPage(path) {
     return location.pathname === path;
   }
 
   return (
-    <nav className="h-[102px] px-[60px] border-b border-[#C6C6C64A]">
-      <div className="h-full flex items-center justify-between">
+    <>
+      <nav className="h-[102px] px-[60px] border-b border-[#C6C6C64A]">
+        <div className="h-full flex items-center justify-between">
 
-       
-        {/* LOGO */}
-    
-        <Link to="/">
-          <img src={logo} alt="HomeFinder Logo" className="w-[190px]" />
-        </Link>
+          {/* LOGO */}
+          <Link to="/">
+            <img src={logo} alt="HomeFinder Logo" className="w-[190px]" />
+          </Link>
 
-  
-        {/* CENTER NAV LINKS */}
-        
-        <div className="h-full flex items-center gap-14">
+          {/* CENTER NAV LINKS */}
+          <div className="h-full flex items-center gap-14">
 
-          {/* GUEST LINKS: sees Properties */}
-          {role === "guest" && (
-            <>
-              <Link to="/properties"
-                className={`h-full flex items-center text-[18px] font-rethink font-regular
-                  ${isCurrentPage("/about") ? "border-b-[3px] border-accent font-medium" : ""}
-                `}>
-                Properties
-              </Link>
-            </>
-          )}
-
-          {/* PROPERTY SEEKER LINKS: sees Properties + Saved Properties */}
-          {role === "seeker" && (
-            <>
-              <Link to="/properties"
-                className={`h-full flex items-center text-[18px] font-rethink font-regular
-                  ${isCurrentPage("/properties") ? "border-b-[3px] border-accent  font-medium" : ""}
-                `}>
-
-                Properties
-
-              </Link>
-            </>
-          )}
-
-          {/* PROPERTY OWNER LINKS: sees Properties + Saved Properties + My Listings */}
-          {role === "owner" && (
-            <>
+            {role === "guest" && (
               <Link to="/properties"
                 className={`h-full flex items-center text-[18px] font-rethink font-regular
                   ${isCurrentPage("/properties") ? "border-b-[3px] border-accent font-medium" : ""}
                 `}>
-
                 Properties
-
               </Link>
+            )}
 
-              <Link to="/my-listings"
+            {role === "seeker" && (
+              <Link to="/properties"
                 className={`h-full flex items-center text-[18px] font-rethink font-regular
-                  ${isCurrentPage("/my-listings") ? "border-b-[3px] border-accent font-medium" : ""}
+                  ${isCurrentPage("/properties") ? "border-b-[3px] border-accent font-medium" : ""}
                 `}>
-                My Listings
+                Properties
               </Link>
-            </>
-          )}
+            )}
 
-        </div>
+            {role === "owner" && (
+              <>
+                <Link to="/properties"
+                  className={`h-full flex items-center text-[18px] font-rethink font-regular
+                    ${isCurrentPage("/properties") ? "border-b-[3px] border-accent font-medium" : ""}
+                  `}>
+                  Properties
+                </Link>
+                <Link to="/my-listings"
+                  className={`h-full flex items-center text-[18px] font-rethink font-regular
+                    ${isCurrentPage("/my-listings") ? "border-b-[3px] border-accent font-medium" : ""}
+                  `}>
+                  My Listings
+                </Link>
+              </>
+            )}
+          </div>
 
+          {/* RIGHT SIDE */}
+          <div className="flex items-center gap-8">
 
-        
-        {/* RIGHT SIDE */}
-       
-        <div className="flex items-center gap-8">
+            {role === "guest" && (
+              <Link to="/signin" className="text-[18px] font-rethink font-regular">
+                Sign in
+              </Link>
+            )}
 
-          {/* Show "Sign in" link if user is a guest */}
-          {role === "guest" && (
-            <Link to="/signin" className="text-[18px] font-rethink font-regular">
+            {(role === "seeker" || role === "owner") && (
+              <div className="relative" ref={avatarRef}>
+                <button
+                  onClick={() => setDropdownOpen((prev) => !prev)}
+                  onMouseEnter={() => setDropdownOpen(true)}
+                  className="focus:outline-none cursor-pointer"
+                >
+                  {role === "seeker" && (
+                    <div className="w-[48px] h-[48px] rounded-full bg-gray-200 flex items-center justify-center text-[16px] font-rethink font-medium text-gray-600">
+                      {user.initials}
+                    </div>
+                  )}
+                  {role === "owner" && (
+                    <img
+                      src={user.avatarUrl}
+                      alt="User avatar"
+                      className="w-[48px] h-[48px] rounded-full object-cover"
+                    />
+                  )}
+                </button>
 
-              Sign in
+                {dropdownOpen && (
+                  <AccountDropdown
+                    onClose={() => setDropdownOpen(false)}
+                    onProfileOpen={() => {
+                      setDropdownOpen(false);
+                      setProfileOpen(true);
+                    }}
+                    user={user}
+                    role={role}
+                  />
+                )}
+              </div>
+            )}
 
+            <Link to="/list-property"
+              className="bg-accent text-surface w-[169px] h-[46px] rounded-xs text-[18px] font-rethink font-regular flex items-center justify-center">
+              List Property
             </Link>
-          )}
 
-           {/* Show avatar if user is logged in (seeker or owner) */}
-{(role === "seeker" || role === "owner") && (
-  // avatarRef wraps the button + dropdown so we can detect outside clicks
-  <div className="relative" ref={avatarRef}>
-
-    {/* Clicking the avatar opens/closes the dropdown */}
-    <button
-      onClick={() => setDropdownOpen(!dropdownOpen)}
-      className="focus:outline-none cursor-pointer"
-    >
-      {/* PROPERTY SEEKER: always shows initials in a circle */}
-      {role === "seeker" && (
-        <div className="w-[48px] h-[48px] rounded-full bg-gray-200 flex items-center justify-center text-[16px] font-rethink font-medium text-EEEDF6">
-          {user.initials}
+          </div>
         </div>
-      )}
+      </nav>
 
-      {/* PROPERTY OWNER: shows their uploaded photo */}
-      {role === "owner" && (
-        <img
-          src={user.avatarUrl}
-          alt="User avatar"
-          className="w-[48px] h-[48px] rounded-full object-cover"
-        />
-      )}
-    </button>
-
-              {/* ACCOUNT DROPDOWN COMPONENT */}
-
-              {/* onClose — closes the dropdown when user clicks any option */}
-              {dropdownOpen && (
-                //<AccountDropdown onClose={() => setDropdownOpen(false)} user={user}/>
-            <div> Dropdown component will be added here</div>
-              )}
-
-            </div>
-          )}
-
-          {/* List Property button */}
-          <Link to="/list-property"
-            className="bg-accent text-surface w-[169px] h-[46px] rounded-xs text-[18px] font-rethink font-regular flex items-center justify-center">
-
-            List Property
-
-          </Link>
-
-        </div>
-
-      </div>
-    </nav>
+      {/* ProfileModal lives here so it survives dropdown unmounting */}
+      <ProfileModal
+        isOpen={profileOpen}
+        onClose={() => setProfileOpen(false)}
+        user={user}
+      />
+    </>
   );
 }
 
