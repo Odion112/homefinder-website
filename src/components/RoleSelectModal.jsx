@@ -21,20 +21,20 @@ export default function RoleSelectModal({ isOpen, onClose }) {
   const [selected, setSelected] = useState(null);
   const [loading, setLoading]   = useState(false);
 
-  // Don't render anything if modal is closed
   if (!isOpen) return null;
 
   async function handleContinue() {
     if (!selected) return;
     setLoading(true);
 
-    // Fake API delay — we'll replace with real PATCH /users/me/role when backend is ready
+ Fake API delay — we'll replace with real PATCH /users/me/role when backend is ready
     localStorage.setItem("userRole", selected);
     await new Promise((r) => setTimeout(r, 600));
 
     setLoading(false);
 
-    // TODO: we'll replace this alert with navigate() when routing is ready
+
+    // we'll replace this alert with navigate() when routing is ready
     alert(`Role saved: ${selected === "owner" ? "Property Owner" : "Property Seeker"}`);
     onClose();
   }
@@ -47,13 +47,13 @@ export default function RoleSelectModal({ isOpen, onClose }) {
     >
       {/* Modal card */}
       <div
-        className="relative bg-white w-full max-w-[480px] mx-4 rounded-lg px-8 py-10 font-neue shadow-2xl"
+        className="relative bg-white w-full max-w-[480px] mx-4 rounded-[4px] px-8 py-10 font-neue shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
 
         {/* Header */}
         <div className="mb-8">
-          <h2 className="text-2xl font-bold text-[#0E0D0C] leading-tight mb-2">
+          <h2 className="text-2xl font-medium font-neue text-[#0E0D0C] leading-tight mb-2">
             How are you using HomeFinder?
           </h2>
           <p className="text-sm text-[#6B6B6B]">
@@ -93,7 +93,7 @@ export default function RoleSelectModal({ isOpen, onClose }) {
 
                 {/* Label + description */}
                 <div className="flex-1 min-w-0">
-                  <p className={`text-sm font-semibold mb-0.5 transition-colors duration-150 ${isSelected ? "text-[#FE7C0B]" : "text-[#0E0D0C]"}`}>
+                  <p className={`text-sm font-medium font-neue mb-0.5 transition-colors duration-150 ${isSelected ? "text-[#0E0D0C]" : "text-[#0E0D0C]"}`}>
                     {label}
                   </p>
                   <p className="text-xs text-[#6B6B6B] leading-relaxed">
@@ -101,7 +101,9 @@ export default function RoleSelectModal({ isOpen, onClose }) {
                   </p>
                 </div>
 
-                {/* Radio dot */}
+
+                {/* Radio button */}
+
                 <div className={`
                   flex-shrink-0 mt-1 w-4 h-4 rounded-full border-2 flex items-center justify-center transition-all duration-150
                   ${isSelected ? "border-[#FE7C0B]" : "border-[#C6C6C6]"}
