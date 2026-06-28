@@ -4,13 +4,14 @@ import Home from "./pages/Home";
 import Properties from "./pages/Properties";
 import Navbar from "./components/Navbar";
 import SignIn from "./pages/SignIn"
+import SignUp from "./pages/SignUp"
 
 function App() {
   
   return (
     <>
 
-    <SignIn />
+    <SignUp />
 
       <Routes>
         <Route path="/" element={<Home />} />
