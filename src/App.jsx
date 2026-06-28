@@ -6,6 +6,8 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Properties from "./pages/Properties";
 import ConfirmDialog from "./components/ConfirmDialog";
+import AccountDropdown from "./components/AccountDropdown1";
+
 
 function App() {
   const [email, setEmail] = useState("");
@@ -16,7 +18,13 @@ function App() {
     setEmail(value);
     setError(value.includes("@") ? "" : "Please enter a valid email.");
   }
-
+function App() {
+  return (
+    <div className="flex items-center justify-center min-h-screen">
+      <AccountDropdown />
+    </div>
+  );
+}
   return (
     <div className="min-h-screen bg-[var(--color-background)] p-10">
       <Navbar />
@@ -29,7 +37,9 @@ function App() {
           placeholder="Enter your email"
           onChange={handleChange}
         />
-        <ConfirmDialog />
+        <ConfirmDialog
+        
+         />
       </div>
 
       <Routes>
