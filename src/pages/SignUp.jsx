@@ -2,6 +2,7 @@ import { useState, forwardRef } from "react";
 import { PiEyeLight, PiEyeSlashLight } from "react-icons/pi";
 import Logo from "../assets/images/logo-white.svg";
 import HeroImage from "../assets/images/hero-image.svg";
+import RoleSelectModal from "../components/RoleSelectModal";
 
 //Button Component
 const Button = forwardRef(function Button(
@@ -131,17 +132,18 @@ function InputField({
 
 
 export default function SignUpPage() {
-  const [fullName, setFullName]   = useState("");
-  const [email, setEmail]         = useState("");
-  const [phone, setPhone]         = useState("");
-  const [password, setPassword]   = useState("");
-  const [showPwd, setShowPwd]     = useState(false);
-
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail]       = useState("");
+  const [phone, setPhone]       = useState("");
+  const [password, setPassword] = useState("");
+  const [showPwd, setShowPwd]   = useState(false);
 
   const [emailError, setEmailError]   = useState("");
   const [globalError, setGlobalError] = useState("");
 
-  
+  // ── ADD: controls whether the role modal is open or closed
+  const [showRoleModal, setShowRoleModal] = useState(false);
+
   const isFilled =
     fullName.trim() !== "" &&
     email.trim() !== "" &&
@@ -149,152 +151,167 @@ export default function SignUpPage() {
     password.trim() !== "";
 
   function handleSubmit() {
-  
     setEmailError("");
     setGlobalError("");
 
-  
+    // Client-side email format check
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setEmailError("Enter a valid email address.");
       return;
     }
 
-    // Simulate "email already registered" error (Fake API call, we'll replace with real API call)
+    // Simulate "email already registered" error (Fake API call, replace with real API later)
     const mockRegisteredEmails = ["johndoe@gmail.com"];
     if (mockRegisteredEmails.includes(email.toLowerCase())) {
       setEmailError("This email is already registered.");
       setGlobalError("This email is already registered.");
       return;
     }
+
+    // ── ADD: all checks passed — open the role selection modal
+    setShowRoleModal(true);
   }
 
   return (
-    <div className="flex min-h-screen w-full font-neue">
+    // ── ADD: wrap everything in a fragment so the modal can sit alongside the page
+    <>
+      <div className="flex min-h-screen w-full font-neue">
 
-      {/*  LEFTSIDE  */}
-      <div className="relative w-[52%] flex-shrink-0">
+        {/* LEFTSIDE */}
+        <div className="relative w-[52%] flex-shrink-0">
 
-        {/* Hero image */}
-        <img
-          src={HeroImage}
-          alt="Modern home exterior"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/40 " />
-
-        {/* Logo */}
-        <div className="absolute top-8 left-10 z-10">
+          {/* Hero image */}
           <img
-            src={Logo}
-            alt="HomeFinder"
-            className="h-4 object-contain"
+            src={HeroImage}
+            alt="Modern home exterior"
+            className="absolute inset-0 w-full h-full object-cover"
           />
-        </div>
 
-        {/* Tagline */}
-        <div className="absolute bottom-12 left-10 right-10 z-10">
-          <h2 className="text-white font-neue font-medium text-3xl leading-tight mb-3">
-            Simplify Your House-hunting Process
-          </h2>
-          <p className="text-white/75 text-base font-neue leading-relaxed">
-            Making your house-hunting journey easy in just few clicks - ast, easy, reliable.
-          </p>
-        </div>
-      </div>
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black/40" />
 
-      {/* RIGHT SIDE */}
-      <div className="flex-1 flex items-center justify-center bg-white px-16">
-        <div className="w-full max-w-[480px]">
-
-          {/* Heading */}
-          <h1 className="text-[32px] font-medium font-neue text-[#0E0D0C] leading-tight mb-2">
-            Create your account
-          </h1>
-          <p className="text-base text-[#6B6B6B] mb-10">
-            Sign in to your account.
-          </p>
-
-          {/* Form fields */}
-          <div className="flex flex-col gap-6">
-
-            {/* Full name */}
-            <InputField
-              label="Full name"
-              placeholder="Enter your full name"
-              type="text"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+          {/* Logo */}
+          <div className="absolute top-8 left-10 z-10">
+            <img
+              src={Logo}
+              alt="HomeFinder"
+              className="h-4 object-contain"
             />
-
-            {/* Email */}
-            <InputField
-              label="Email"
-              placeholder="Enter your email address"
-              type="email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                setEmailError("");
-                setGlobalError("");
-              }}
-              error={emailError}
-            />
-
-            {/* Phone number */}
-            <InputField
-              label="Phone number"
-              placeholder="Enter your phone number"
-              type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
-
-            {/* Password */}
-            <InputField
-              label="Password"
-              placeholder="Enter your password"
-              type={showPwd ? "text" : "password"}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              rightIcon={
-                <button
-                  type="button"
-                  onClick={() => setShowPwd((v) => !v)}
-                  className="text-[#A5A1A1] hover:text-[#555] transition-colors cursor-pointer"
-                  tabIndex={-1}
-                >
-                  {showPwd
-                    ? <PiEyeLight size={20} />
-                    : <PiEyeSlashLight size={20} />
-                  }
-                </button>
-              }
-            />
-
-            {/* Button */}
-            <Button
-              variant="filled"
-              disabled={!isFilled}
-              onClick={handleSubmit}
-              className="!w-full !h-12 mt-1"
-            >
-              Create account
-            </Button>
           </div>
 
-          {/* Sign in link */}
-          <p className="text-center text-sm text-[#6B6B6B] mt-6">
-            Have any account?{" "}
-            <a href="/sign-in" className="text-[#0E0D0C] font-semibold hover:text-[#FE7C0B] transition-colors">
-              Login
-            </a>
-          </p>
+          {/* Tagline */}
+          <div className="absolute bottom-12 left-10 right-10 z-10">
+            <h2 className="text-white font-neue font-medium text-3xl leading-tight mb-3">
+              Simplify Your House-hunting Process
+            </h2>
+            <p className="text-white/75 text-base font-neue leading-relaxed">
+              Making your house-hunting journey easy in just few clicks - ast, easy, reliable.
+            </p>
+          </div>
+        </div>
+
+        {/* RIGHT SIDE */}
+        <div className="flex-1 flex items-center justify-center bg-white px-16">
+          <div className="w-full max-w-[480px]">
+
+            {/* Global error */}
+            {globalError && (
+              <p className="text-sm text-[#EA0000] mb-5">{globalError}</p>
+            )}
+
+            {/* Heading */}
+            <h1 className="text-[32px] font-medium font-neue text-[#0E0D0C] leading-tight mb-2">
+              Create your account
+            </h1>
+            <p className="text-base text-[#6B6B6B] mb-10">
+              Sign in to your account.
+            </p>
+
+            {/* Form fields */}
+            <div className="flex flex-col gap-6">
+
+              {/* Full name */}
+              <InputField
+                label="Full name"
+                placeholder="Enter your full name"
+                type="text"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+              />
+
+              {/* Email */}
+              <InputField
+                label="Email"
+                placeholder="Enter your email address"
+                type="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setEmailError("");
+                  setGlobalError("");
+                }}
+                error={emailError}
+              />
+
+              {/* Phone number */}
+              <InputField
+                label="Phone number"
+                placeholder="Enter your phone number"
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+
+              {/* Password */}
+              <InputField
+                label="Password"
+                placeholder="Enter your password"
+                type={showPwd ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                rightIcon={
+                  <button
+                    type="button"
+                    onClick={() => setShowPwd((v) => !v)}
+                    className="text-[#A5A1A1] hover:text-[#555] transition-colors cursor-pointer"
+                    tabIndex={-1}
+                  >
+                    {showPwd
+                      ? <PiEyeLight size={20} />
+                      : <PiEyeSlashLight size={20} />
+                    }
+                  </button>
+                }
+              />
+
+              {/* Button */}
+              <Button
+                variant="filled"
+                disabled={!isFilled}
+                onClick={handleSubmit}
+                className="!w-full !h-12 mt-1"
+              >
+                Create account
+              </Button>
+            </div>
+
+            {/* Sign in link */}
+            <p className="text-center text-sm text-[#6B6B6B] mt-6">
+              Have any account?{" "}
+              <a href="/sign-in" className="text-[#0E0D0C] font-semibold hover:text-[#FE7C0B] transition-colors">
+                Login
+              </a>
+            </p>
+          </div>
         </div>
       </div>
 
-    </div>
+      {/* ── ADD: Role modal mounts here, on top of the page */}
+      <RoleSelectModal
+        isOpen={showRoleModal}
+        onClose={() => setShowRoleModal(false)}
+      />
+    </>
   );
 }
