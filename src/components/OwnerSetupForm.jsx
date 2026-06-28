@@ -69,7 +69,7 @@ function OwnerSetupForm({ onContinue, onCancel, initialData = {} }) {
   }
 
   return (
-    <div className="bg-white border border-[#C6C6C6]/40 shadow-md rounded-[4px] p-[48px] w-full max-w-[760px] mx-auto">
+    <div className="bg-white border border-[#C6C6C6]/40 shadow-md rounded-[4px] p-[48px] w-full max-w-[900px] mx-auto">
 
       {/* Heading */}
       <h1 className="text-[28px] font-neue font-roman text-[#1A1A1A] leading-tight mb-[8px]">
@@ -275,7 +275,8 @@ function OwnerSetupForm({ onContinue, onCancel, initialData = {} }) {
           Only my profile photo will be visible to property seekers.
         </p>
       </div>
- <div className="border-t border-[#c6c6c6] mt-4 pt-4 flex gap-3"></div>
+
+ <div className="border-t border-[#c6c6c6]/40 mt-4 pt-4 flex gap-3"></div>
 
       {/*  BUTTONS */}
       <div className="flex items-center justify-end gap-[12px]">
