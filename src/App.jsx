@@ -5,14 +5,17 @@ import Properties from "./pages/Properties";
 import ProfileModal from "./components/ProfileModal";
 
 function App() {
-  const [profileOpen, setProfileOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(true);
 
   return (
     <>
-      <ProfileModal isOpen={profileOpen} onClose={() => setProfileOpen(false)} />
+      <ProfileModal
+        isOpen={profileOpen}
+        onClose={() => setProfileOpen(false)}
+      />
+
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
         <Route path="/properties" element={<Properties />} />
       </Routes>
     </>
