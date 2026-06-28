@@ -6,13 +6,13 @@ const ROLES = [
   {
     id: "owner",
     label: "Property Owner",
-    description: "I want to list and manage my properties for rent or sale.",
+    description: "I want to list and manage my properties for rent.",
     icon: LuBuilding2,
   },
   {
     id: "seeker",
     label: "Property Seeker",
-    description: "I'm looking for a property to rent or buy.",
+    description: "I'm looking for a property to rent.",
     icon: LuSearch,
   },
 ];
@@ -27,12 +27,11 @@ export default function RoleSelectModal({ isOpen, onClose }) {
     if (!selected) return;
     setLoading(true);
 
- Fake API delay — we'll replace with real PATCH /users/me/role when backend is ready
+    // Fake API— we'll replace with real PATCH /users/me/role when backend is ready
     localStorage.setItem("userRole", selected);
     await new Promise((r) => setTimeout(r, 600));
 
     setLoading(false);
-
 
     // we'll replace this alert with navigate() when routing is ready
     alert(`Role saved: ${selected === "owner" ? "Property Owner" : "Property Seeker"}`);
@@ -85,7 +84,7 @@ export default function RoleSelectModal({ isOpen, onClose }) {
                   className={`
                     flex-shrink-0 w-10 h-10 rounded-xs flex items-center justify-center mt-0.5
                     transition-colors duration-150
-                    ${isSelected ? "bg-[#FE7C0B] text-white" : "bg-[#F5F5F5] text-[#6B6B6B]"}
+                    ${isSelected ? "bg-[#FE7C0B] text-[#ffffff]" : "bg-[#F5F5F5] text-[#6B6B6B]"}
                   `}
                 >
                   <Icon size={18} />
@@ -101,9 +100,7 @@ export default function RoleSelectModal({ isOpen, onClose }) {
                   </p>
                 </div>
 
-
                 {/* Radio button */}
-
                 <div className={`
                   flex-shrink-0 mt-1 w-4 h-4 rounded-full border-2 flex items-center justify-center transition-all duration-150
                   ${isSelected ? "border-[#FE7C0B]" : "border-[#C6C6C6]"}
