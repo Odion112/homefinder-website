@@ -1,17 +1,10 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Properties from "./pages/Properties";
+import AccountDropdown2 from "./components/AccountDropdown2";
 
 function App() {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/properties" element={<Properties />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
-      </Routes>
-    </>
+    <div className="min-h-screen flex items-center justify-center">
+      <AccountDropdown2 />
+    </div>
   );
 }
 
