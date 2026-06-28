@@ -1,36 +1,23 @@
 import { useState } from "react";
 import { AiOutlineLogout, AiOutlineUser } from "react-icons/ai";
 import ConfirmDialog from "./ConfirmDialog";
-import ProfileModal from "./ProfileModal";
 
-<<<<<<< HEAD
-function AccountDropdown({ user, role, onClose }) {
-  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
-  const [showProfile, setShowProfile] = useState(false);
-
-=======
 function AccountDropdown({ user, role, onClose, onProfileOpen }) {
->>>>>>> origin/main
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+
   if (!user) return null;
 
   function handleProfile() {
-    onClose();
-<<<<<<< HEAD
-    setShowProfile(true);
-=======
     onProfileOpen();
->>>>>>> origin/main
   }
 
   function handleLogoutConfirm() {
     setShowLogoutConfirm(false);
     onClose();
-    // TODO: real logout logic here
   }
 
   return (
     <>
-      {/* Dropdown */}
       <div className="absolute right-0 top-[calc(100%+12px)] w-[280px] bg-white rounded-sm shadow-[0px_4px_24px_rgba(0,0,0,0.12)] z-50">
 
         <div className="flex items-center gap-4 px-5 py-5">
@@ -82,18 +69,11 @@ function AccountDropdown({ user, role, onClose, onProfileOpen }) {
         </div>
       </div>
 
-      {/* Profile Modal */}
-      <ProfileModal
-        isOpen={showProfile}
-        onClose={() => setShowProfile(false)}
-        user={user}
-      />
-
       {/* Logout Confirm Dialog */}
       {showLogoutConfirm && (
         <div
           className="fixed inset-0 bg-black/30 z-50 flex items-center justify-center"
-          onClick={() => setShowLogoutConfirm(false)}
+          onClick={() => { setShowLogoutConfirm(false); onClose(); }}
         >
           <div onClick={(e) => e.stopPropagation()}>
             <ConfirmDialog
@@ -102,7 +82,7 @@ function AccountDropdown({ user, role, onClose, onProfileOpen }) {
               cancelLabel="Cancel"
               confirmLabel="Logout"
               confirmColor="#EA0000"
-              onCancel={() => setShowLogoutConfirm(false)}
+              onCancel={() => { setShowLogoutConfirm(false); onClose(); }}
               onConfirm={handleLogoutConfirm}
             />
           </div>
