@@ -1,11 +1,11 @@
 import { AiOutlineLogout, AiOutlineUser } from "react-icons/ai";
 
-function AccountDropdown({ user, role, onClose }) {
+function AccountDropdown({ user, role, onClose, onProfileOpen }) {
   if (!user) return null;
 
   function handleProfile() {
     onClose();
-    // TODO: navigate to profile page
+    onProfileOpen();
   }
 
   function handleLogout() {

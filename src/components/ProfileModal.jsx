@@ -6,8 +6,8 @@ import Input from "./Input";
 
 const InfoField = ({ label, value }) => (
   <div className="mb-4">
-    <p className="text-xs text-gray-400 mb-0.5">{label}</p>
-    <p className="text-sm font-semibold text-gray-900">{value}</p>
+    <p className="text-xs font-neue text-gray-400 mb-0.5">{label}</p>
+    <p className="text-sm font-neue font-roman text-gray-900">{value}</p>
   </div>
 );
 
@@ -85,7 +85,7 @@ const ProfileModal = ({ isOpen, onClose, user, onSaveProfile, onSavePassword }) 
         onClick={handleClose}
       >
         <div
-          className="relative bg-white rounded-2xl shadow-xl w-full max-w-sm mx-4 p-6"
+          className="relative bg-white rounded-[4px] shadow-xl w-full max-w-sm mx-4 p-6"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close button */}
@@ -99,7 +99,7 @@ const ProfileModal = ({ isOpen, onClose, user, onSaveProfile, onSavePassword }) 
           {/* ── DEFAULT VIEW ── */}
           {view === "default" && (
             <>
-              <h2 className="text-sm font-semibold text-gray-900 mb-4">
+              <h2 className="text-sm font-medium font-neue text-gray-900 mb-4">
                 Profile Information
               </h2>
               <InfoField label="Full name" value={user?.name} />
@@ -108,19 +108,19 @@ const ProfileModal = ({ isOpen, onClose, user, onSaveProfile, onSavePassword }) 
 
               <Button
                 variant="filled"
-                className="!w-full !h-10 !rounded-lg"
+                className="!w-40 !h-10 !rounded-[4px]"
                 onClick={() => setView("editProfile")}
               >
                 Edit profile
               </Button>
 
-              <div className="border-t border-gray-100 mt-6 pt-4">
+              <div className="border-t border-gray-100 mt-6 pt-4 font-neue">
                 <p className="text-xs text-gray-400 mb-3">Security</p>
-                <p className="text-sm font-semibold text-gray-900">Password</p>
+                <p className="text-sm font-medium text-gray-900">Password</p>
                 <p className="text-xs text-gray-400 mb-4">Last changed 30 days ago</p>
                 <Button
                   variant="outline"
-                  className="!w-full !h-10 !rounded-lg hover:!bg-gray-50 hover:!text-gray-800"
+                  className="!w-60 !h-10 !rounded-[4px] hover:!bg-gray-50 hover:!text-gray-800"
                   onClick={() => setView("changePassword")}
                 >
                   Change password
@@ -132,7 +132,7 @@ const ProfileModal = ({ isOpen, onClose, user, onSaveProfile, onSavePassword }) 
           {/* ── EDIT PROFILE VIEW ── */}
           {view === "editProfile" && (
             <>
-              <h2 className="text-sm font-semibold text-gray-900 mb-5">
+              <h2 className="text-sm font-medium font-neue text-gray-900 mb-5">
                 Profile Information
               </h2>
 
@@ -141,7 +141,7 @@ const ProfileModal = ({ isOpen, onClose, user, onSaveProfile, onSavePassword }) 
                 value={profileForm.name}
                 onChange={(e) => setProfileForm((p) => ({ ...p, name: e.target.value }))}
                 placeholder="Enter full name"
-                className="!w-full mb-4"
+                className="!w-full mb-4 font-neue"
               />
               <Input
                 label="Email address"
@@ -149,27 +149,27 @@ const ProfileModal = ({ isOpen, onClose, user, onSaveProfile, onSavePassword }) 
                 value={profileForm.email}
                 onChange={(e) => setProfileForm((p) => ({ ...p, email: e.target.value }))}
                 placeholder="Enter email address"
-                className="!w-full mb-4"
+             className="!w-full mb-4 font-neue"
               />
               <Input
                 label="Phone number"
                 value={profileForm.phone}
                 onChange={(e) => setProfileForm((p) => ({ ...p, phone: e.target.value }))}
                 placeholder="Enter phone number"
-                className="!w-full"
+             className="!w-full mb-4 font-neue"
               />
 
               <div className="border-t border-gray-100 mt-4 pt-4 flex gap-3">
                 <Button
                   variant="outline"
-                  className="!flex-1 !w-auto !h-10 !rounded-lg hover:!bg-gray-50 hover:!text-gray-800"
+                  className="!flex-1 !w-auto !h-10 !rounded-[4px] hover:!bg-gray-50 hover:!text-gray-800"
                   onClick={handleCancel}
                 >
                   Cancel
                 </Button>
                 <Button
                   variant="filled"
-                  className="!flex-1 !w-auto !h-10 !rounded-lg"
+                  className="!flex-1 !w-auto !h-10 !rounded-[4px]"
                   onClick={handleSaveProfile}
                 >
                   Save changes
@@ -181,66 +181,66 @@ const ProfileModal = ({ isOpen, onClose, user, onSaveProfile, onSavePassword }) 
           {/* ── CHANGE PASSWORD VIEW ── */}
           {view === "changePassword" && (
             <>
-              <h2 className="text-sm font-semibold text-gray-900 mb-5">
+              <h2 className="text-sm font-medium font-neue text-[#0E0D0C] mb-5">
                 Change password
               </h2>
 
               {/* Current password */}
-              <div className="relative mb-4">
-                <Input
-                  label="Current password"
-                  type={showPass.current ? "text" : "password"}
-                  value={passwordForm.current}
-                  onChange={(e) =>
-                    setPasswordForm((p) => ({ ...p, current: e.target.value }))
-                  }
-                  placeholder="Enter current password"
-                  className="!w-full"
-                />
-                <EyeToggle field="current" />
+              <div className="mb-4">
+                <p className="text-sm font-rethink text-[#0E0D0C] mb-1.5">Current password</p>
+                <div className="relative">
+                  <input
+                    type={showPass.current ? "text" : "password"}
+                    value={passwordForm.current}
+                    onChange={(e) => setPasswordForm((p) => ({ ...p, current: e.target.value }))}
+                    placeholder="Enter current password"
+                    className="w-full rounded-[4px] border border-gray-300 px-4 py-3.5 text-sm font-rethink text-[#0E0D0C] placeholder-gray-400 outline-none transition-all duration-150 focus:border-[#FE7C0B] pr-10"
+                  />
+                  <EyeToggle field="current" />
+                </div>
               </div>
 
               {/* New password */}
-              <div className="relative mb-4">
-                <Input
-                  label="New password"
-                  type={showPass.newPass ? "text" : "password"}
-                  value={passwordForm.newPass}
-                  onChange={(e) =>
-                    setPasswordForm((p) => ({ ...p, newPass: e.target.value }))
-                  }
-                  placeholder="Enter new password"
-                  className="!w-full"
-                />
-                <EyeToggle field="newPass" />
+              <div className="mb-4">
+                <p className="text-sm font-rethink text-[#0E0D0C] mb-1.5">New password</p>
+                <div className="relative">
+                  <input
+                    type={showPass.newPass ? "text" : "password"}
+                    value={passwordForm.newPass}
+                    onChange={(e) => setPasswordForm((p) => ({ ...p, newPass: e.target.value }))}
+                    placeholder="Enter new password"
+                    className="w-full rounded-[4px] border border-gray-300 px-4 py-3.5 text-sm font-rethink text-[#0E0D0C] placeholder-gray-400 outline-none transition-all duration-150 focus:border-[#FE7C0B] pr-10"
+                  />
+                  <EyeToggle field="newPass" />
+                </div>
               </div>
 
               {/* Confirm password */}
-              <div className="relative">
-                <Input
-                  label="Confirm password"
-                  type={showPass.confirm ? "text" : "password"}
-                  value={passwordForm.confirm}
-                  onChange={(e) =>
-                    setPasswordForm((p) => ({ ...p, confirm: e.target.value }))
-                  }
-                  placeholder="Re-enter new password"
-                  className="!w-full"
-                />
-                <EyeToggle field="confirm" />
+              <div className="mb-2">
+                <p className="text-sm font-rethink text-[#0E0D0C] mb-1.5">Confirm password</p>
+                <div className="relative">
+                  <input
+                    type={showPass.confirm ? "text" : "password"}
+                    value={passwordForm.confirm}
+                    onChange={(e) => setPasswordForm((p) => ({ ...p, confirm: e.target.value }))}
+                    placeholder="Re-enter new password"
+                    className="w-full rounded-[4px] border border-gray-300 px-4 py-3.5 text-sm font-rethink text-[#0E0D0C] placeholder-gray-400 outline-none transition-all duration-150 focus:border-[#FE7C0B] pr-10"
+                  />
+                  <EyeToggle field="confirm" />
+                </div>
               </div>
 
               <div className="border-t border-gray-100 mt-4 pt-4 flex gap-3">
                 <Button
                   variant="outline"
-                  className="!flex-1 !w-auto !h-10 !rounded-lg hover:!bg-gray-50 hover:!text-gray-800"
+                  className="!flex-1 !w-auto !h-10 !rounded-[4px] hover:!bg-gray-50 hover:!text-gray-800"
                   onClick={handleCancel}
                 >
                   Cancel
                 </Button>
                 <Button
                   variant="filled"
-                  className="!flex-1 !w-auto !h-10 !rounded-lg"
+                  className="!flex-1 !w-auto !h-10 !rounded-[4px]"
                   onClick={handleSavePassword}
                 >
                   Save password
