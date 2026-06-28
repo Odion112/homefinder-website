@@ -137,7 +137,7 @@ function Navbar() {
         </div>
       </nav>
 
-      {/* ProfileModal lives here so it survives dropdown unmounting */}
+      {/* ProfileModal */}
       <ProfileModal
         isOpen={profileOpen}
         onClose={() => setProfileOpen(false)}
