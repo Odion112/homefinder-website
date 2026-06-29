@@ -10,22 +10,22 @@ import {
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import LandlordCard from "../components/LandlordCard";
 import AmenityTag from "../components/AmenityTag";
+import LandlordCard from "../components/LandlordCard"
 
 const ALL_AMENITIES = [
-  { icon: HiOutlineBolt,   label: "24/7 Power Supply" },
-  { icon: PiCar,           label: "Parking Space" },
-  { icon: CiWifiOn,        label: "Internet Availability" },
-  { icon: PiShieldCheck,   label: "Security" },
-  { icon: PiCar,           label: "Good Road Access" },
-  { icon: PiBarbell,       label: "Gym" },
-  { icon: PiDrop,          label: "Running water" },
-  { icon: MdOutlineKitchen,label: "Fitted Kitchen" },
-  { icon: PiArmchair,      label: "Built-in Wardrobes" },
-  { icon: PiThermometer,   label: "Water Heater" },
-  { icon: PiCamera,        label: "CCTV Surveillance" },
-  { icon: PiSquaresFour,   label: "POP Ceiling" },
+  { icon: HiOutlineBolt,    label: "24/7 Power Supply" },
+  { icon: PiCar,            label: "Parking Space" },
+  { icon: CiWifiOn,         label: "Internet Availability" },
+  { icon: PiShieldCheck,    label: "Security" },
+  { icon: PiCar,            label: "Good Road Access" },
+  { icon: PiBarbell,        label: "Gym" },
+  { icon: PiDrop,           label: "Running water" },
+  { icon: MdOutlineKitchen, label: "Fitted Kitchen" },
+  { icon: PiArmchair,       label: "Built-in Wardrobes" },
+  { icon: PiThermometer,    label: "Water Heater" },
+  { icon: PiCamera,         label: "CCTV Surveillance" },
+  { icon: PiSquaresFour,    label: "POP Ceiling" },
 ];
 
 const IMAGES = [
@@ -48,12 +48,12 @@ const landlordData = {
   whatsapp: "+234 701 111 2222",
 };
 
-export default function PropertyDetailPage() {
-  const [showAllPhotos, setShowAllPhotos]         = useState(false);
-  const [showAllAmenities, setShowAllAmenities]   = useState(false);
-  const [showFullDesc, setShowFullDesc]           = useState(false);
-  const [showFullVerified, setShowFullVerified]   = useState(false);
-  const [linkCopied, setLinkCopied]               = useState(false);
+export default function PropertyDetails() {
+  const [showAllPhotos, setShowAllPhotos]       = useState(false);
+  const [showAllAmenities, setShowAllAmenities] = useState(false);
+  const [showFullDesc, setShowFullDesc]         = useState(false);
+  const [showFullVerified, setShowFullVerified] = useState(false);
+  const [linkCopied, setLinkCopied]             = useState(false);
 
   function handleShare() {
     navigator.clipboard.writeText(window.location.href).then(() => {
@@ -72,16 +72,31 @@ export default function PropertyDetailPage() {
 
       {/* ── Photo gallery ── */}
       <div className="w-full bg-gray-100">
-        <div className="grid gap-1" style={{ gridTemplateColumns: "55% 45%", height: "567px" }}>
+        <div
+          className="grid gap-1"
+          style={{ gridTemplateColumns: "55% 45%", height: "567px" }}
+        >
           <div className="overflow-hidden h-full">
-            <img src={IMAGES[0]} alt="Property exterior" className="w-full h-full object-cover" />
+            <img
+              src={IMAGES[0]}
+              alt="Property exterior"
+              className="w-full h-full object-cover"
+            />
           </div>
           <div className="grid grid-rows-2 gap-1 h-full">
             <div className="overflow-hidden">
-              <img src={IMAGES[1]} alt="Interior" className="w-full h-full object-cover" />
+              <img
+                src={IMAGES[1]}
+                alt="Interior"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="relative overflow-hidden">
-              <img src={IMAGES[2]} alt="Interior 2" className="w-full h-full object-cover" />
+              <img
+                src={IMAGES[2]}
+                alt="Interior 2"
+                className="w-full h-full object-cover"
+              />
               <button
                 onClick={() => setShowAllPhotos(!showAllPhotos)}
                 className="absolute inset-0 bg-black/50 text-white flex items-center justify-center font-neue font-medium text-[15px] hover:bg-black/60 transition-colors"
@@ -95,57 +110,66 @@ export default function PropertyDetailPage() {
         {showAllPhotos && (
           <div className="grid grid-cols-4 gap-1 mt-1">
             {IMAGES.slice(3).map((src, i) => (
-              <img key={i} src={src} alt={`extra-${i}`} className="w-full object-cover" style={{ height: "200px" }} />
+              <img
+                key={i}
+                src={src}
+                alt={`extra-${i}`}
+                className="w-full object-cover"
+                style={{ height: "200px" }}
+              />
             ))}
           </div>
         )}
       </div>
 
       {/* ── Page body ── */}
-      <div className="flex-1 px-[60px] pt-52 pb-20">
+      <div className="flex-1 px-[60px] pt-10 pb-20">
 
-        {/* ── Breadcrumb row — full width, share + posted date on right ── */}
+        {/* Breadcrumb — full width row */}
         <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-2 text-[15px] font-rethink font-regular text-[#696262]">
+          <div className="flex items-center gap-2 text-[15px] font-rethink text-[#696262]">
             <PiArrowLeft size={16} />
             <span>Properties</span>
             <span>/</span>
-            <span className="text-[#0E0D0C] font-rethink font-medium">3 Bedroom Flat</span>
+            <span className="text-[#0E0D0C] font-medium">3 Bedroom Flat</span>
           </div>
-          <div className="flex items-center gap-5">
-            <span className="text-[14px] font-rethink font-regular text-[#696262]">
-              Posted 2 days ago
-            </span>
-            <button
-              onClick={handleShare}
-              className="flex items-center gap-2 border border-[#C6C6C6] text-[#0E0D0C] font-rethink font-regular text-[14px] px-4 py-2 hover:bg-gray-50 transition-colors"
-              style={{ borderRadius: "4px" }}
-            >
-              {linkCopied ? (
-                <>
-                  <PiCheckCircle size={16} className="text-green-500" />
-                  <span className="text-green-600">Link copied!</span>
-                </>
-              ) : (
-                <>
-                  <PiShareNetwork size={16} />
-                  <span>Share</span>
-                </>
-              )}
-            </button>
-          </div>
+          <span className="text-[14px] font-rethink text-[#696262]">
+            Posted 2 days ago
+          </span>
         </div>
 
         {/* ── Two-column layout ── */}
-        <div className="flex items-start pt-90px" style={{ gap: "70px" }}>
+        <div className="flex items-start" style={{ gap: "70px" }}>
 
-          {/* LEFT: all content sections */}
+          {/* ── LEFT: all content ── */}
           <div className="flex-1 min-w-0">
 
-            {/* Title + location + specs */}
-            <h1 className="text-[36px] font-neue font-medium text-[#0E0D0C] leading-tight mb-2">
-              3 Bedroom Flat
-            </h1>
+            {/* Title row: h1 on left, Share button on right */}
+            <div className="flex items-start justify-between mb-2">
+              <h1 className="text-[36px] font-neue font-medium text-[#0E0D0C] leading-tight">
+                3 Bedroom Flat
+              </h1>
+              {/* Share button — sits level with the title, right edge of left column */}
+              <button
+                onClick={handleShare}
+                className="flex items-center gap-2 border border-[#C6C6C6] text-[#0E0D0C] font-rethink text-[14px] px-4 py-2 hover:bg-gray-50 transition-colors shrink-0 mt-2"
+                style={{ borderRadius: "4px" }}
+              >
+                {linkCopied ? (
+                  <>
+                    <PiCheckCircle size={16} className="text-green-500" />
+                    <span className="text-green-600">Link copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <PiShareNetwork size={16} />
+                    <span>Share</span>
+                  </>
+                )}
+              </button>
+            </div>
+
+            {/* Location + specs */}
             <p className="text-[15px] font-neue font-roman text-[#696262] mb-2">
               📍 Lekki Phase 1, Lagos
             </p>
@@ -196,7 +220,9 @@ export default function PropertyDetailPage() {
                 onClick={() => setShowAllAmenities(!showAllAmenities)}
                 className="flex items-center gap-1 text-[14px] font-neue font-medium text-[#0E0D0C] mt-4 hover:text-[#FE7C0B] transition-colors"
               >
-                {showAllAmenities ? "Show less ↑" : `Show all (${ALL_AMENITIES.length}) ↓`}
+                {showAllAmenities
+                  ? "Show less ↑"
+                  : `Show all (${ALL_AMENITIES.length}) ↓`}
               </button>
             </section>
 
@@ -235,7 +261,7 @@ export default function PropertyDetailPage() {
 
           </div>
 
-          {/* RIGHT: landlord card only — sticky independently */}
+          {/* ── RIGHT: LandlordCard only — sticky ── */}
           <div className="shrink-0 sticky top-[118px]">
             <LandlordCard landlord={landlordData} isGuest={false} />
           </div>
