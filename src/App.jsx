@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Properties from "./pages/Properties";
-import OwnerSetup from "./pages/OwnerSetup";
+import OwnerSetup from "./pages/listing/OwnerSetup";
 
 function App() {
   

@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import ListingProgressBar from "../components/ListingProgressBar";
-import OwnerSetupForm from "../components/OwnerSetupForm";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import ListingProgressBar from "../../components/listing/ListingProgressBar";
+import OwnerSetupForm from "../../components/listing/OwnerSetupForm";
 
 function OwnerSetupPage() {
   const navigate = useNavigate();
