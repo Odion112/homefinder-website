@@ -25,7 +25,7 @@ function OwnerSetupPage() {
       <Navbar />
 
  
-      <ListingProgressBar className=" pb-[45px] pt-[7px]"
+      <ListingProgressBar className=" pb-[45px] pt-[55px]"
         currentStep={1}
         totalSteps={2}
         label="Property Owner Setup"
