@@ -35,6 +35,17 @@ function Navbar() {
     return location.pathname === path;
   }
 
+
+function getListPropertyRoute() {
+  if (role === "guest") return "/sign-in";
+
+  if (role === "seeker") return "/owner-setup";
+
+  if (role === "owner") return "/existing-owner-list";
+
+  return "/";
+}
+
   return (
     <>
       <nav className="h-[102px] px-[60px] border-b border-[#C6C6C64A]">
@@ -88,7 +99,7 @@ function Navbar() {
           <div className="flex items-center gap-8">
 
             {role === "guest" && (
-              <Link to="/signin" className="text-[18px] font-rethink font-regular">
+              <Link to="/sign-in" className="text-[18px] font-rethink font-regular">
                 Sign in
               </Link>
             )}
@@ -127,11 +138,12 @@ function Navbar() {
                 )}
               </div>
             )}
-
-            <Link to="/list-property"
-              className="bg-accent text-surface w-[169px] h-[46px] rounded-xs text-[18px] font-rethink font-regular flex items-center justify-center">
-              List Property
-            </Link>
+<Link
+  to={getListPropertyRoute()}
+  className="bg-accent text-surface w-[169px] h-[46px] rounded-xs text-[18px] font-rethink font-regular flex items-center justify-center"
+>
+  List Property
+</Link>
 
           </div>
         </div>

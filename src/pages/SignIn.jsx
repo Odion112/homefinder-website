@@ -1,4 +1,5 @@
 import { useState, forwardRef } from "react";
+import { Link } from "react-router-dom";
 import { PiEyeLight, PiEyeSlashLight } from "react-icons/pi";
 import Logo from "../assets/images/logo-white.svg";
 import HeroImage from "../assets/images/hero-image.svg";
@@ -247,9 +248,9 @@ export default function SignInPage() {
        
           <p className="text-center text-sm text-[#6B6B6B] mt-6">
             Don't have any account?{" "}
-            <a href="#" className="text-[#0E0D0C] font-semibold hover:text-[#FE7C0B] transition-colors">
+            <Link to="/sign-up" className="text-[#0E0D0C] font-semibold hover:text-[#FE7C0B] transition-colors">
               Create an account
-            </a>
+            </Link>
           </p>
         </div>
       </div>

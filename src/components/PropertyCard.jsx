@@ -9,6 +9,7 @@ export default function PropertyCard({
   title,
   location,
   price,
+  duration,
   beds,
   baths,
   power,
@@ -17,20 +18,20 @@ export default function PropertyCard({
   return (
     <div
       className="
-        w-[420px]
-        h-[446px]
+        w-[345px]
+        h-[410px]
         overflow-hidden
-        rounded-[20px]
+        rounded-[4px]
         bg-white
         shadow-sm
         transition
-        hover:shadow-lg
+        hover:shadow-md
         font-neue
           ring-1
     ring-[#C6C6C6]/25"
     >
       {/* PROPERTY IMAGE */}
-      <div className="relative w-full h-[275px] overflow-hidden">
+      <div className="relative w-full h-[240px] overflow-hidden">
         <img
           src={image}
           alt={title}
@@ -63,8 +64,8 @@ export default function PropertyCard({
           </div>
 
           <h3 className="whitespace-nowrap text-[26px] font-NeueHaasDisplay text-[#0E0D0C] leading-tight">
-  <span className="font-neue font-medium">₦4.5M</span>
-  <span className="font-neue font-roman">/yr</span>
+  <span className="font-neue font-medium">{price}</span>
+ <span className="font-neue font-medium">{duration}</span>
 </h3>
         </div>
 
