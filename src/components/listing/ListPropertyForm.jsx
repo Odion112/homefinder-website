@@ -487,8 +487,8 @@ function ListPropertyForm({
           </div>
         </div>
       )}
-
 <div className="border-t border-[#c6c6c6]/40 mt-8 mb-4 pt-4 flex gap-3"></div>
+
 
       {/* BUTTONS */}
       <div className="flex items-center justify-end gap-[12px]">
