@@ -1,14 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Properties from "./pages/Properties";
-import ListProperty from "./pages/listing/ListProperty";
+import ExistingOwnerList from "./pages/listing/ExistingOwnerList";
 
 
 function App() {
   return (
     <>
 
-    <ListProperty />
+    <ExistingOwnerList />
 
       <Routes>
         <Route path="/" element={<Home />} />
