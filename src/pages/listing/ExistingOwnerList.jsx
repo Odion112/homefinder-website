@@ -30,7 +30,7 @@ function ExistingOwnerList() {
   const [showLeaveDialog, setShowLeaveDialog] = useState(false);
   const [pendingDestination, setPendingDest]  = useState(null);
 
-  // ── Leave guard ──────────────────────────────────────────────────────────
+
   function requestLeave(destination = "/properties") {
     setPendingDest(destination);
     setShowLeaveDialog(true);
@@ -46,7 +46,7 @@ function ExistingOwnerList() {
     setPendingDest(null);
   }
 
-  // ── Publish ──────────────────────────────────────────────────────────────
+
   function handlePublish(formData) {
     // TODO: POST formData to backend
     console.log("New listing data:", formData);
@@ -97,10 +97,10 @@ function ExistingOwnerList() {
 
       <Footer />
 
-      {/* ── Leave listing dialog ───────────────────────────────────────── */}
+      {/*Leave listing dialog*/}
       {showLeaveDialog && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-          <ConfirmDialog className="!h-90"
+          <ConfirmDialog
             title="Leave listing?"
             message="Your changes won't be saved."
             cancelLabel="Stay"
