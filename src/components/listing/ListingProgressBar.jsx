@@ -40,8 +40,4 @@ function ListingProgressBar({
   );
 }
 
-<<<<<<< HEAD:src/components/listing/ListingProgressBar.jsx
 export default ListingProgressBar;
-=======
-export default ListingProgressBar;
->>>>>>> main:src/components/ListingProgressBar.jsx
