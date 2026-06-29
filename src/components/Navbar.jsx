@@ -1,14 +1,19 @@
 import logo from "../assets/images/logo.svg";
 import avatar from "../assets/images/avatar.svg";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import AccountDropdown from "./AccountDropdown";
 import ProfileModal from "./ProfileModal";
 
+/* We'll change this to hook into our real auth later but for now we'll use "guest" | "seeker" | "owner" to switch in between roles */
+
+const CURRENT_ROLE = "guest"; 
+
 function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const role = "owner"; // "guest" | "seeker" | "owner"
+  const role = CURRENT_ROLE;
   const user = {
     initials: "JD",
     avatarUrl: avatar,
@@ -35,6 +40,17 @@ function Navbar() {
     return location.pathname === path;
   }
 
+  // "List Property" button routes based on role
+  function handleListProperty() {
+    if (role === "guest") {
+      navigate("/signin");           // not logged in → sign in first
+    } else if (role === "seeker") {
+      navigate("/owner-setup");      // logged in but not owner → owner setup step 1
+    } else if (role === "owner") {
+     navigate("/existing-owner-list");// already an owner → go to their listings
+    }
+  }
+
   return (
     <>
       <nav className="h-[102px] px-[60px] border-b border-[#C6C6C64A]">
@@ -47,40 +63,22 @@ function Navbar() {
 
           {/* CENTER NAV LINKS */}
           <div className="h-full flex items-center gap-14">
-
-            {role === "guest" && (
-              <Link to="/properties"
-                className={`h-full flex items-center text-[18px] font-rethink font-regular
-                  ${isCurrentPage("/properties") ? "border-b-[3px] border-accent font-medium" : ""}
-                `}>
-                Properties
-              </Link>
-            )}
-
-            {role === "seeker" && (
-              <Link to="/properties"
-                className={`h-full flex items-center text-[18px] font-rethink font-regular
-                  ${isCurrentPage("/properties") ? "border-b-[3px] border-accent font-medium" : ""}
-                `}>
-                Properties
-              </Link>
-            )}
+            <Link
+              to="/properties"
+              className={`h-full flex items-center text-[18px] font-rethink font-regular
+                ${isCurrentPage("/properties") ? "border-b-[3px] border-accent font-medium" : ""}
+              `}>
+              Properties
+            </Link>
 
             {role === "owner" && (
-              <>
-                <Link to="/properties"
-                  className={`h-full flex items-center text-[18px] font-rethink font-regular
-                    ${isCurrentPage("/properties") ? "border-b-[3px] border-accent font-medium" : ""}
-                  `}>
-                  Properties
-                </Link>
-                <Link to="/my-listings"
-                  className={`h-full flex items-center text-[18px] font-rethink font-regular
-                    ${isCurrentPage("/my-listings") ? "border-b-[3px] border-accent font-medium" : ""}
-                  `}>
-                  My Listings
-                </Link>
-              </>
+              <Link
+                to="/my-listings"
+                className={`h-full flex items-center text-[18px] font-rethink font-regular
+                  ${isCurrentPage("/my-listings") ? "border-b-[3px] border-accent font-medium" : ""}
+                `}>
+                My Listings
+              </Link>
             )}
           </div>
 
@@ -128,10 +126,13 @@ function Navbar() {
               </div>
             )}
 
-            <Link to="/list-property"
-              className="bg-accent text-surface w-[169px] h-[46px] rounded-xs text-[18px] font-rethink font-regular flex items-center justify-center">
+            {/* List Property button — routing based on role */}
+            <button
+              onClick={handleListProperty}
+              className="bg-accent text-surface w-[169px] h-[46px] rounded-xs text-[18px] font-rethink font-regular flex items-center justify-center cursor-pointer"
+            >
               List Property
-            </Link>
+            </button>
 
           </div>
         </div>
