@@ -10,7 +10,7 @@ import PropertyDetails from "./PropertyDetails";
 import OwnerSetup from "./listing/OwnerSetup";
 import ListProperty from "./listing/ListProperty";
 import ExistingOwnerList from "./listing/ExistingOwnerList";
-
+import MyListings from "./listing/MyListings";
 
 export default function Navigation() {
   return (
@@ -30,6 +30,7 @@ export default function Navigation() {
         <Route path="/list-property" element={<ListProperty />} />
         <Route path="/owner-setup" element={<OwnerSetup />} />
         <Route path="/existing-owner-list" element={<ExistingOwnerList />}/>
+        <Route path="/my-listings" element={<MyListings />}/>
 
 
 

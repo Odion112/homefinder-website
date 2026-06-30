@@ -20,7 +20,7 @@ export default function PropertyCard({
 
     <div
   className={`
-    w-[345px]
+    w-[360px]
     h-[410px]
     overflow-hidden
     rounded-[4px]
