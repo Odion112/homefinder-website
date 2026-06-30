@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+
+
 import { PiArrowLeft, PiShareNetwork, PiCheckCircle } from "react-icons/pi";
 import { HiOutlineBolt } from "react-icons/hi2";
 import { CiWifiOn } from "react-icons/ci";
@@ -49,6 +52,7 @@ const landlordData = {
 };
 
 export default function PropertyDetails() {
+    const { id } = useParams();
   const [showAllPhotos, setShowAllPhotos]       = useState(false);
   const [showAllAmenities, setShowAllAmenities] = useState(false);
   const [showFullDesc, setShowFullDesc]         = useState(false);
@@ -67,6 +71,7 @@ export default function PropertyDetails() {
     : ALL_AMENITIES.slice(0, 6);
 
   return (
+    
     <div className="min-h-screen bg-white flex flex-col">
       <Navbar />
 

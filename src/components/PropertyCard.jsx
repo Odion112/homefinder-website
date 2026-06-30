@@ -14,22 +14,26 @@ export default function PropertyCard({
   baths,
   power,
   verified = true,
+    className = "",
 }) {
   return (
+
     <div
-      className="
-        w-[345px]
-        h-[410px]
-        overflow-hidden
-        rounded-[4px]
-        bg-white
-        shadow-sm
-        transition
-        hover:shadow-md
-        font-neue
-          ring-1
-    ring-[#C6C6C6]/25"
-    >
+  className={`
+    w-[345px]
+    h-[410px]
+    overflow-hidden
+    rounded-[4px]
+    bg-white
+    shadow-sm
+    transition
+    hover:shadow-md
+    font-neue
+    ring-1
+    ring-[#C6C6C6]/25
+    ${className}
+  `}
+>
       {/* PROPERTY IMAGE */}
       <div className="relative w-full h-[240px] overflow-hidden">
         <img
