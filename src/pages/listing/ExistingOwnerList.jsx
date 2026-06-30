@@ -1,8 +1,6 @@
 /* List a Property page for returning owners who have already completed
  owner setup. They land here directly — no progress bar, no Step 1.
 
-Route: /list-property  (when role === "owner" && ownerProfileComplete === true)
-
 Differences from ListPropertyPage:
 No progress bar — breadcrumb instead
 Owner navbar (Properties + My Listings + avatar)
