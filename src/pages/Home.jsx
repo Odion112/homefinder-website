@@ -1,7 +1,8 @@
 import { useContext, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import { TokenContext } from "../context/TokenContext";
-import { getProfile } from "../utils/fn";
+import AboutUs from "../components/AboutUs";
+
+
 
 function Home() {
 
@@ -26,9 +27,10 @@ function Home() {
 
     return (
         <>
-            <Navbar />
-
-
+        <Navbar />
+              <AboutUs />
+           
+        
         </>
     )
 }
