@@ -139,13 +139,13 @@ export default function MyListingCard({
   return (
     <div
       className="
-        w-[420px] overflow-hidden rounded-[20px] bg-white
+        w-[360px] overflow-hidden rounded-[4px] bg-white
         shadow-sm transition hover:shadow-lg font-neue
         ring-1 ring-[#C6C6C6]/25
       "
     >
       {/* IMAGE */}
-      <div className="relative w-full h-[275px] overflow-hidden rounded-t-[20px]">
+      <div className="relative w-full h-[270px] overflow-hidden rounded-t-[4px]">
         <img
           src={image}
           alt={title}

@@ -100,7 +100,7 @@ const similarListings = [
 
 export default function HomePage() {
   return (
-    <div className="bg-white">
+    <div className="bg-[#FDFDFD]">
       <Navbar />
 
       {/* HERO */}

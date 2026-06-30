@@ -306,7 +306,7 @@ const filteredProperties = properties.filter((property) => {
         </div>
 
         {/* GRID */}
-   <div className="mt-[32px] flex gap-[20px] items-start">
+   <div className="mt-[48px] flex gap-[20px] items-start">
 
   {/* FILTER PANEL */}
   {showFilters && (
@@ -358,7 +358,7 @@ const filteredProperties = properties.filter((property) => {
         <PropertyCard
   className={
     showFilters
-      ? "!w-[330px]"
+      ? "!w-[356px]"
       : ""
   }
             image={property.image}
