@@ -57,14 +57,25 @@ And because Home Finder connects users directly to landlords, we do not allow in
 
 If anyone requests an inspection fee while claiming to represent a listing on our platform, please treat it as suspicious and report the listing immediately. roads.`;
 
-export default function PropertyDetailPage() {
+
+export default function PropertyDetails() {
   const [showAllAmenities, setShowAllAmenities] = useState(false);
   const [showFullVerification, setShowFullVerification] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
   const [featuredImage, setFeaturedImage] = useState(GALLERY_IMAGES[0]);
   const [showAllPhotos, setShowAllPhotos] = useState(false);
 
-  // Right-side thumbnails shown by default (everything after the first/hero image)
+   const landlordData = {
+    name: "Jamiu Peters",
+    verified: true,
+    avatarUrl: null,
+    propertiesListed: 9,
+    memberSince: 2026,
+    phone: "+2347011112222",
+    whatsapp: "+2347011112222",
+  };
+
+  // Right-side thumbnails shown by default
   const sideThumbnails = GALLERY_IMAGES.slice(1, 3);
   // Extra thumbnails revealed when "View all photos" is tapped
   const remainingThumbnails = GALLERY_IMAGES.slice(3);
@@ -284,9 +295,12 @@ export default function PropertyDetailPage() {
           </div>
 
           {/* RIGHT COLUMN */}
-          <div className="sticky top-10 self-start ">
-            <LandlordCard />
-          </div>
+          <div className="sticky top-[120px] self-start">
+  <LandlordCard
+    landlord={landlordData}
+    isGuest={false}
+  />
+</div>
         </div>
         </div>
       </main>

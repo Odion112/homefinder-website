@@ -306,7 +306,7 @@ const filteredProperties = properties.filter((property) => {
         </div>
 
         {/* GRID */}
-   <div className="mt-[58px] flex gap-[28px]">
+   <div className="mt-[32px] flex gap-[20px] items-start">
 
   {/* FILTER PANEL */}
   {showFilters && (
