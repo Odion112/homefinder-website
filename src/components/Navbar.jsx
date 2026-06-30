@@ -8,7 +8,7 @@ import ProfileModal from "./ProfileModal";
 function Navbar() {
   const location = useLocation();
 
-  const role = "owner"; // "guest" | "seeker" | "owner"
+  const role = "seeker"; // "guest" | "seeker" | "owner"
   const user = {
     initials: "JD",
     avatarUrl: avatar,
@@ -51,10 +51,23 @@ function getListPropertyRoute() {
       <nav className="h-[102px] px-[60px] border-b border-[#C6C6C64A]">
         <div className="h-full flex items-center justify-between">
 
-          {/* LOGO */}
-          <Link to="/">
-            <img src={logo} alt="HomeFinder Logo" className="w-[190px]" />
-          </Link>
+         
+        {/* LOGO */}
+{role === "guest" ? (
+  <Link to="/">
+    <img
+      src={logo}
+      alt="HomeFinder Logo"
+      className="w-[190px]"
+    />
+  </Link>
+) : (
+  <img
+    src={logo}
+    alt="HomeFinder Logo"
+    className="w-[190px]"
+  />
+)}
 
           {/* CENTER NAV LINKS */}
           <div className="h-full flex items-center gap-14">
@@ -106,11 +119,10 @@ function getListPropertyRoute() {
 
             {(role === "seeker" || role === "owner") && (
               <div className="relative" ref={avatarRef}>
-                <button
-                  onClick={() => setDropdownOpen((prev) => !prev)}
-                  onMouseEnter={() => setDropdownOpen(true)}
-                  className="focus:outline-none cursor-pointer"
-                >
+               <button
+  onClick={() => setDropdownOpen((prev) => !prev)}
+  className="focus:outline-none cursor-pointer"
+>
                   {role === "seeker" && (
                     <div className="w-[48px] h-[48px] rounded-full bg-gray-200 flex items-center justify-center text-[16px] font-rethink font-medium text-gray-600">
                       {user.initials}
