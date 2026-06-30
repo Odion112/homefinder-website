@@ -52,7 +52,7 @@ const landlordData = {
 };
 
 export default function PropertyDetails() {
-    const { id } = useParams();
+    // const { id } = useParams();
   const [showAllPhotos, setShowAllPhotos]       = useState(false);
   const [showAllAmenities, setShowAllAmenities] = useState(false);
   const [showFullDesc, setShowFullDesc]         = useState(false);

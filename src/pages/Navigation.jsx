@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Home from "./Home";
 import SignIn from "./SignIn";
@@ -13,30 +13,34 @@ import ExistingOwnerList from "./listing/ExistingOwnerList";
 
 
 export default function Navigation() {
+
+  const isLoggedIn = false
+
   return (
-    <BrowserRouter>
-      <Routes>
+    <Routes>
+      {/* Public Pages */}
+      <Route path="/" element={<Home />} />
+      <Route path="/properties" element={<Properties />} />
+      <Route path="/property-details" element={<PropertyDetails />} />
 
-        {/* Public Pages */}
-        <Route path="/" element={<Home />} />
-        <Route path="/properties" element={<Properties />} />
-        <Route path="/property-details" element={<PropertyDetails />} />
+      {/* Auth */}
+      <Route path="/sign-in" element={<SignIn />} />
+      <Route path="/sign-up" element={<SignUp />} />
 
-        {/* Auth */}
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
+      {/* Listing Flow */}
+      { isLoggedIn && (
+        <>
+          <Route path="/list-property" element={<ListProperty />} />
+          <Route path="/owner-setup" element={<OwnerSetup />} />
+          <Route path="/existing-owner-list" element={<ExistingOwnerList />} />
+        </>
+      )
+      }
 
-        {/* Listing Flow */}
-        <Route path="/list-property" element={<ListProperty />} />
-        <Route path="/owner-setup" element={<OwnerSetup />} />
-        <Route path="/existing-owner-list" element={<ExistingOwnerList />}/>
+      {/* Redirect unknown routes */}
+      <Route path="*" element={<Navigate to="/" replace />} />
 
+    </Routes>
 
-
-        {/* Redirect unknown routes */}
-        <Route path="*" element={<Navigate to="/" replace />} />
-
-      </Routes>
-    </BrowserRouter>
   );
 }
