@@ -1,9 +1,7 @@
-import { useContext, useReducer } from "react";
+import { createContext, useReducer } from "react";
 
-// filepath: /home/ejike/Desktop/cbc-2026/projects/group B/homefinder-frontend/src/context/ProfileContext.jsx
-
-export const ProfileContext = useContext(null)
-export const ProfileDispatchContext = useContext(null)
+export const ProfileContext = createContext(null)
+export const ProfileDispatchContext = createContext(null)
 
 function profileReducer(oldProfile, action) {
     switch (action.type) {
@@ -13,7 +11,7 @@ function profileReducer(oldProfile, action) {
             }
         }
         case "clear": {
-            return null
+            return {}
         }
         default: { }
     }
@@ -21,13 +19,13 @@ function profileReducer(oldProfile, action) {
 
 export default function ProfileProvider({ children }) {
 
-    const [profile, dispatch] = useReducer(profileReducer, null)
+    const [profile, dispatch] = useReducer(profileReducer, {})
 
     return (
-        <ProfileContext value={profile}>
-            <ProfileDispatchContext value={dispatch}>
+        <ProfileContext.Provider value={profile}>
+            <ProfileDispatchContext.Provider value={dispatch}>
                 {children}
-            </ProfileDispatchContext>
-        </ProfileContext>
+            </ProfileDispatchContext.Provider>
+        </ProfileContext.Provider>
     )
 }

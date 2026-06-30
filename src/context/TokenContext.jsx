@@ -1,7 +1,7 @@
-import { useContext, useReducer } from "react";
+import { createContext, useReducer } from "react";
 
-export const TokenContext = useContext(null)
-export const TokenDispatchContext = useContext(null)
+export const TokenContext = createContext(null)
+export const TokenDispatchContext = createContext(null)
 
 function tokenReducer(oldToken, action) {
     switch (action.type) {
@@ -24,10 +24,10 @@ export default function TokenProvider({ children }) {
     const [token, dispatch] = useReducer(tokenReducer, { token: null })
 
     return (
-        <TokenContext value={token}>
-            <TokenDispatchContext value={dispatch}>
+        <TokenContext.Provider value={token}>
+            <TokenDispatchContext.Provider value={dispatch}>
                 {children}
-            </TokenDispatchContext>
-        </TokenContext>
+            </TokenDispatchContext.Provider>
+        </TokenContext.Provider>
     )
 }

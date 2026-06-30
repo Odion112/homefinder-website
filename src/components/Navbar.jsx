@@ -5,17 +5,10 @@ import { useState, useRef, useEffect } from "react";
 import AccountDropdown from "./AccountDropdown";
 import ProfileModal from "./ProfileModal";
 
-function Navbar() {
-  const location = useLocation();
+function Navbar({profile}) {
 
-  const role = "owner"; // "guest" | "seeker" | "owner"
-  const user = {
-    initials: "JD",
-    avatarUrl: avatar,
-    name: "John Doe",
-    email: "john@example.com",
-    phone: "+234 8908 8746",
-  };
+
+  const role = profile ? profile.role : 'guest'
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
@@ -39,7 +32,7 @@ function Navbar() {
 function getListPropertyRoute() {
   if (role === "guest") return "/sign-in";
 
-  if (role === "seeker") return "/owner-setup";
+  if (role === "tenant") return "/owner-setup";
 
   if (role === "owner") return "/existing-owner-list";
 
@@ -68,7 +61,7 @@ function getListPropertyRoute() {
               </Link>
             )}
 
-            {role === "seeker" && (
+            {role === "tenant" && (
               <Link to="/properties"
                 className={`h-full flex items-center text-[18px] font-rethink font-regular
                   ${isCurrentPage("/properties") ? "border-b-[3px] border-accent font-medium" : ""}
@@ -104,14 +97,14 @@ function getListPropertyRoute() {
               </Link>
             )}
 
-            {(role === "seeker" || role === "owner") && (
+            {(role === "tenant" || role === "owner") && (
               <div className="relative" ref={avatarRef}>
                 <button
                   onClick={() => setDropdownOpen((prev) => !prev)}
                   onMouseEnter={() => setDropdownOpen(true)}
                   className="focus:outline-none cursor-pointer"
                 >
-                  {role === "seeker" && (
+                  {role === "tenant" && (
                     <div className="w-[48px] h-[48px] rounded-full bg-gray-200 flex items-center justify-center text-[16px] font-rethink font-medium text-gray-600">
                       {user.initials}
                     </div>
@@ -132,7 +125,7 @@ function getListPropertyRoute() {
                       setDropdownOpen(false);
                       setProfileOpen(true);
                     }}
-                    user={user}
+                    user={profile}
                     role={role}
                   />
                 )}
@@ -153,7 +146,7 @@ function getListPropertyRoute() {
       <ProfileModal
         isOpen={profileOpen}
         onClose={() => setProfileOpen(false)}
-        user={user}
+        user={profile}
       />
     </>
   );

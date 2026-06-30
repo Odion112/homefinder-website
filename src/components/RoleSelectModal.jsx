@@ -10,39 +10,22 @@ const ROLES = [
     icon: LuBuilding2,
   },
   {
-    id: "seeker",
+    id: "tenant",
     label: "Property Seeker",
     description: "I'm looking for a property to rent.",
     icon: LuSearch,
   },
 ];
 
-export default function RoleSelectModal({ isOpen, onClose }) {
+export default function RoleSelectModal({ isOpen, onClose, getRole, onClick, loading }) {
   const [selected, setSelected] = useState(null);
-  const [loading, setLoading]   = useState(false);
 
   if (!isOpen) return null;
-
-  async function handleContinue() {
-    if (!selected) return;
-    setLoading(true);
-
-    // Fake API— we'll replace with real PATCH /users/me/role when backend is ready
-    localStorage.setItem("userRole", selected);
-    await new Promise((r) => setTimeout(r, 600));
-
-    setLoading(false);
-
-    // we'll replace this alert with navigate() when routing is ready
-    alert(`Role saved: ${selected === "owner" ? "Property Owner" : "Property Seeker"}`);
-    onClose();
-  }
 
   return (
    
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
-      onClick={onClose}
     >
       {/* Modal card */}
       <div
@@ -68,7 +51,10 @@ export default function RoleSelectModal({ isOpen, onClose }) {
               <button
                 key={id}
                 type="button"
-                onClick={() => setSelected(id)}
+                onClick={() =>{ 
+                  setSelected(id)
+                  getRole(id)
+                }}
                 className={`
                   flex items-start gap-4 w-full text-left
                   border rounded-sm px-5 py-4
@@ -118,7 +104,7 @@ export default function RoleSelectModal({ isOpen, onClose }) {
         <button
           type="button"
           disabled={!selected || loading}
-          onClick={handleContinue}
+          onClick={onClick}
           className={`
             w-full h-12 rounded-xs text-sm font-neue font-medium
             transition-all duration-150 flex items-center justify-center gap-2
