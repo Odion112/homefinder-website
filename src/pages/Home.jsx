@@ -142,13 +142,13 @@ export default function HomePage() {
 
           <Link
             to="/properties"
-            className="flex items-center gap-2 border border-white/30 rounded-[4px] px-6 py-3 text-white font-rethink text-[16px] hover:bg-white/10 transition"
+            className="flex items-center gap-2 border border-white/30 rounded-sm px-6 py-3 text-white font-rethink text-[16px] hover:bg-white/10 transition"
           >
             Explore properties <span aria-hidden>→</span>
           </Link>
         </div>
 
-        <div className="mt-10 lg:mt-12 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7 lg:gap-[30px]">
+        <div className="mt-12 grid grid-cols-3 gap-7.5">
           {similarListings.map((listing) => (
             <HomePagePropertyCard
               key={listing.id}

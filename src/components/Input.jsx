@@ -9,6 +9,7 @@ export default function InputField({
   error = "",
   disabled = false,
   className = "",
+  required = true
 }) {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -18,11 +19,11 @@ export default function InputField({
   const borderClass = isError
     ? "border-[#EA0000] bg-red-[#EA0000]/8"
     : isActive
-    ? "border-[#FE7C0B]"
-    : "border-gray-300 bg-white";
+      ? "border-[#FE7C0B]"
+      : "border-gray-300 bg-white";
 
   return (
-    <div className={`flex flex-col gap-1.5 w-[500px] ${className}`}>
+    <div className={`flex flex-col gap-1.5 w-full ${className}`}>
       {label && (
         <label className="text-sm font-roman font-neue text-[#0E0D0C]">{label}</label>
       )}
@@ -35,6 +36,7 @@ export default function InputField({
         disabled={disabled}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
+        required={required}
         className={`
           w-full rounded-xs border px-4 py-3.5
           text-sm text-[#0E0D0C] placeholder-gray-[#A5A1A1]
