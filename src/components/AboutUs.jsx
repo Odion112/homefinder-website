@@ -4,10 +4,10 @@ import users from "../assets/images/users-group.svg";
 
 function AboutUs() {
   return (
-    <section className="bg-transparent text-[#0E0D0C] font-neue px-[60px] py-[80px] overflow-hidden">
+    <section className="bg-transparent text-[#0E0D0C] font-neue px-[60px] py-[90px] overflow-hidden">
       <div className="max-w-7xl mx-auto">
 
-        <div className="grid lg:grid-cols-2 gap-[35px] items-start">
+        <div className="grid lg:grid-cols-2 gap-[5px] items-start">
 
           {/* LEFT */}
           <div className="w-115">
@@ -83,34 +83,31 @@ function AboutUs() {
 
             </div>
 
-            {/* DESCRIPTION */}
-            <div className="mt-[170px] pr-[280px]">
+            {/* DESCRIPTION + FLOATING IMAGE */}
+            <div className="mt-[85px] flex items-end justify-between gap-8 ">
 
-              <p className="text-[#696262] text-[14px] w-[280px] leading-[24px]">
+              <p className="text-[#696262] text-[15px] w-[420px] leading-[24px]">
                 Our goal is to connect property seekers with property owners
                 through a simpler and more transparent rental experience,
                 helping users discover available listings and find a place
                 they can call home.
               </p>
 
-            </div>
+              <img
+                src={SmallPropertyImage}
+                alt="Small House"
+                className="
+                  hidden
+                  lg:block
+                  w-[190px]
+                  h-[200px]
+                  object-cover
+                  rounded-sm
+                  shrink-0
+                "
+              />
 
-            {/* FLOATING IMAGE */}
-            <img
-              src={SmallPropertyImage}
-              alt="Small House"
-              className="
-                hidden
-                lg:block
-                absolute
-                right-6
-                bottom-0
-                w-[190px]
-                h-[200px]
-                object-cover
-                rounded-sm
-              "
-            />
+            </div>
 
           </div>
         </div>

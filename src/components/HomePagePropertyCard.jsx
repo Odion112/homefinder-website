@@ -16,12 +16,13 @@ export default function HomePagePropertyCard({
   verified = true,
 }) {
   return (
+
     <div
       className="
-        w-[420px]
-        h-[446px]
+         w-[360px]
+    h-[410px]
         overflow-hidden
-        rounded-[20px]
+        rounded-[6px]
         bg-transparent
         transition
          hover:bg-white/[0.06]
@@ -29,7 +30,7 @@ export default function HomePagePropertyCard({
       "
     >
       {/* PROPERTY IMAGE */}
-      <div className="relative w-full h-[275px] overflow-hidden rounded-t-[20px]">
+      <div className="relative w-full h-[240px] overflow-hidden rounded-t-[6px]">
         <img
           src={image}
           alt={title}

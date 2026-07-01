@@ -1,23 +1,38 @@
-export async function client(url, options = {}) {
-    const token = sessionStorage.getItem('token');
+import axios from 'axios';
 
-    const headers = {
+// Local
+const baseURL = "https://homefinder-backend-hxp6.onrender.com";
+
+const client = axios.create({
+    baseURL,
+    headers: {
         'Content-Type': 'application/json',
-        ...options.headers,
-    };
+    },
+});
 
-    if (token) {
-        headers.Authorization = `Bearer ${token}`;
+client.interceptors.request.use(
+    (config) => {
+        const token = sessionStorage.getItem('myToken');
+
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
     }
+);
 
-    const response = await fetch(url, {
-        ...options,
-        headers,
-    });
 
-    if (!response.ok) {
-        throw new Error(`API Error: ${response.statusText}`);
+client.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        if (error.response?.status === 401) {
+            console.error('Unauthorized! Redirecting to login...');
+        }
+        return Promise.reject(error);
     }
+);
 
-    return response.json();
-}
+export default client;

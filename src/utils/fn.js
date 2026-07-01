@@ -1,5 +1,7 @@
 //Register
 
+import client from "./api";
+
 const baseUrl = "https://homefinder-backend-hxp6.onrender.com"
 
 export async function signUp(data) {
@@ -18,7 +20,6 @@ export async function signUp(data) {
 
             throw error;
         }
-
         const responseData = await res.json()
         return responseData
     } catch (error) {
@@ -71,6 +72,17 @@ export async function getProfile(token) {
 
         return responseData
 
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export async function register(data) {
+    try {
+        const res = await client.post("/auth/register", data)
+        if (!res.ok) {throw new Error()}
+        const response = await res.json()
+        console.log(response)
     } catch (error) {
         console.log(error)
     }
