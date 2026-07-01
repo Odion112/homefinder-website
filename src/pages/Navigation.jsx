@@ -10,7 +10,7 @@ import PropertyDetails from "./PropertyDetails";
 import OwnerSetup from "./listing/OwnerSetup";
 import ListProperty from "./listing/ListProperty";
 import ExistingOwnerList from "./listing/ExistingOwnerList";
-
+import MyListings from "./listing/MyListings";
 
 export default function Navigation() {
 
