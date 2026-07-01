@@ -63,13 +63,10 @@ export default function LandlordCard({ landlord, isGuest = false }) {
 
   return (
     <>
-      <div
-        className="bg-white rounded-[6px] border border-gray-100 shadow-sm"
-        style={{ width: "500px", paddingLeft: "40px", paddingRight: "40px", paddingTop: "40px", paddingBottom: "40px" }}
-      >
+      <div className="w-full lg:max-w-[500px] bg-white rounded-[6px] border border-gray-100 shadow-sm px-5 sm:px-8 lg:px-10 py-6 sm:py-8 lg:py-10">
         {/* Price */}
         <div className="mb-4">
-          <p className="text-[34px] font-medium font-neue text-[#0E0D0C] leading-tight">
+          <p className="text-[28px] sm:text-[34px] font-medium font-neue text-[#0E0D0C] leading-tight">
             ₦4,500,000
             <span className="text-xl font-light font-neue text-[#0E0D0C]">/ yr</span>
           </p>
@@ -99,7 +96,7 @@ export default function LandlordCard({ landlord, isGuest = false }) {
         </div>
 
         {/* Stats */}
-        <div className="flex items-start gap-10 mb-5 bg-[#F5F5F5]/50 pl-6 pt-4 pb-4 rounded-sm">
+        <div className="flex items-start gap-5 sm:gap-10 mb-5 bg-[#F5F5F5]/50 px-4 sm:pl-6 pt-4 pb-4 rounded-sm">
           <div>
             <p className="text-[16px] font-medium font-neue text-[#0E0D0C]">{propertiesListed}</p>
             <p className="text-xs text-[#A5A1A1] font-neue">Properties Listed</p>

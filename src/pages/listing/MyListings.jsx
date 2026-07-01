@@ -90,15 +90,16 @@ export default function MyListings() {
 
       <Navbar />
 
-      <section className="px-[60px] pt-[44px]">
+      <section className="px-5 sm:px-8 lg:px-[60px] pt-8 lg:pt-[44px]">
 
         {/* HEADER */}
-        <div className="flex items-start justify-between">
+        <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
 
           <div>
             <h1
               className="
-                  text-[32px]
+                  text-[30px]
+                  sm:text-[32px]
                 leading-none
                 font-roman
                 font-neue
@@ -121,17 +122,17 @@ export default function MyListings() {
           </div>
 
           {/* SEARCH + SORT */}
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full lg:w-auto">
 
             <SearchBar
              value={query}
              onChange={setQuery}
-             className="w-[300px] h-[40px] shrink-0"
+             className="w-full sm:w-[300px] h-[40px] sm:shrink-0"
            />
 
 
 {/* SORTBY DROPDOWN */}
-<div className="relative w-[145px]">
+<div className="relative w-full sm:w-[145px]">
 
   <button
     onClick={() => setOpen((prev) => !prev)}
@@ -210,12 +211,18 @@ export default function MyListings() {
         {/* GRID */}
         <div
           className="
-            mt-[48px]
+            mt-9
+            lg:mt-[48px]
             grid
-            grid-cols-3
-            gap-x-[28px]
-            gap-y-[32px]
-            pb-[140px]
+            grid-cols-1
+            sm:grid-cols-2
+            xl:grid-cols-3
+            gap-x-[24px]
+            xl:gap-x-[28px]
+            gap-y-[30px]
+            lg:gap-y-[32px]
+            pb-20
+            lg:pb-[140px]
           "
         >
           {filteredListings.map((listing) => (
