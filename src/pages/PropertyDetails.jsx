@@ -102,16 +102,16 @@ export default function PropertyDetails() {
     <>
       <Navbar />
 
-      <main className="pt-8">
+      <main className="pt-5 lg:pt-8">
         <div className="w-full">
-          <div className="grid grid-cols-[2fr_1fr] gap-1.5">
+          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-1.5">
             <img
               src={featuredImage}
               alt="Property featured view"
-              className="w-full h-[500px] object-cover"
+              className="w-full h-[320px] sm:h-[420px] lg:h-[500px] object-cover"
             />
 
-            <div className="flex flex-col gap-1.5">
+            <div className="grid grid-cols-2 md:flex md:flex-col gap-1.5">
               {sideThumbnails.map((image, index) => {
                 const isLastThumbnail = index === sideThumbnails.length - 1;
                 return (
@@ -119,7 +119,7 @@ export default function PropertyDetails() {
                     key={image}
                     type="button"
                     onClick={() => setFeaturedImage(image)}
-                    className="relative w-full h-[247px] overflow-hidden"
+                    className="relative w-full h-[150px] sm:h-[190px] lg:h-[247px] overflow-hidden"
                   >
                     <img
                       src={image}
@@ -140,7 +140,7 @@ export default function PropertyDetails() {
                             setShowAllPhotos((prev) => !prev);
                           }
                         }}
-                        className="absolute inset-0 bg-black/40 hover:bg-black/50 transition-colors flex items-center justify-center text-white text-[20px] font-rethink font-medium"
+                        className="absolute inset-0 bg-black/40 hover:bg-black/50 transition-colors flex items-center justify-center text-white text-[16px] sm:text-[20px] font-rethink font-medium text-center px-3"
                       >
                         {showAllPhotos ? "Show fewer" : "View all photos"}
                       </span>
@@ -153,13 +153,13 @@ export default function PropertyDetails() {
 
           {/* Remaining photos — revealed when "View all photos" is tapped */}
           {showAllPhotos && remainingThumbnails.length > 0 && (
-            <div className="grid grid-cols-4 gap-1.5 mt-1.5">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 mt-1.5">
               {remainingThumbnails.map((image) => (
                 <button
                   key={image}
                   type="button"
                   onClick={() => setFeaturedImage(image)}
-                  className="w-full h-[160px] overflow-hidden"
+                  className="w-full h-[130px] sm:h-[160px] overflow-hidden"
                 >
                   <img
                     src={image}
@@ -172,26 +172,26 @@ export default function PropertyDetails() {
           )}
         </div>
 
-        <div className="px-[60px]">
+        <div className="px-5 sm:px-8 lg:px-[60px]">
         {/* Breadcrumb */}
-        <div className="flex items-center justify-between mt-12 mb-10">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-8 lg:mt-12 mb-8 lg:mb-10">
           <Link
             to="/properties"
-            className="flex items-center gap-2 text-[16px] font-rethink font-regular text-[#696262]"
+            className="flex items-center gap-2 text-[14px] sm:text-[16px] font-rethink font-regular text-[#696262] min-w-0"
           >
             <PiArrowLeft size={18} />
             Properties
             <span className="text-[#696262]">/</span>
-            <span className="font-medium font-rethink text-[#0E0D0C]">3 Bedroom Flat</span>
+            <span className="font-medium font-rethink text-[#0E0D0C] truncate">3 Bedroom Flat</span>
           </Link>
           <p className="text-[14px] font-neue text-[#696262]">Posted 2 days ago</p>
         </div>
 
         {/* Title row + share */}
-        <div className="grid grid-cols-[1fr_500px] gap-10 mt-3 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_500px] gap-5 lg:gap-10 mt-3 items-start">
           <div>
             <div className="flex items-start justify-between">
-              <h1 className="text-[40px] font-neue font-roman text-[#0E0D0C] leading-tight">
+              <h1 className="text-[32px] sm:text-[40px] font-neue font-roman text-[#0E0D0C] leading-tight">
                 3 Bedroom Flat
               </h1>
             </div>
@@ -201,7 +201,7 @@ export default function PropertyDetails() {
               Lekki Phase 1, Lagos
             </div>
 
-            <div className="flex items-center gap-6 mt-4 text-[15px] font-neue text-[#0E0D0C]">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-4 text-[15px] font-neue text-[#0E0D0C]">
               <div className="flex items-center gap-2">
                 <PiBed size={20} />
                 3 Bedrooms
@@ -214,7 +214,7 @@ export default function PropertyDetails() {
           </div>
 
 
-          <div className="flex justify-end items-center gap-3">
+          <div className="flex justify-start lg:justify-end items-center gap-3">
             {linkCopied && (
               <span className="flex items-center gap-1.5 text-[14px] font-rethink font-medium text-[#0B8A2F]">
                 <PiCheckCircle size={18} className="text-[#0B8A2F]" />
@@ -232,7 +232,7 @@ export default function PropertyDetails() {
         </div>
 
         {/* LEFT COLUMN */}
-        <div className="grid grid-cols-[1fr_500px] gap-x-[90px] mt-10 pb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_500px] gap-8 lg:gap-x-[90px] mt-10 pb-16 lg:pb-20">
 
           <div>
             {/* Description */}
@@ -302,7 +302,7 @@ export default function PropertyDetails() {
           </div>
 
           {/* RIGHT COLUMN */}
-          <div className="sticky top-10 self-start">
+          <div className="lg:sticky lg:top-10 self-start w-full">
   <LandlordCard landlord={landlordData} isGuest={false} />
 </div>
         </div>
