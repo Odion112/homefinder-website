@@ -20,7 +20,7 @@ export default function Navigation() {
         {/* Public Pages */}
         <Route path="/" element={<Home />} />
         <Route path="/properties" element={<Properties />} />
-        <Route path="/property-details" element={<PropertyDetails />} />
+        <Route path="/properties/:id" element={<PropertyDetails />} /> {/* ✅ changed */}
 
         {/* Auth */}
         <Route path="/sign-in" element={<SignIn />} />
@@ -29,10 +29,8 @@ export default function Navigation() {
         {/* Listing Flow */}
         <Route path="/list-property" element={<ListProperty />} />
         <Route path="/owner-setup" element={<OwnerSetup />} />
-        <Route path="/existing-owner-list" element={<ExistingOwnerList />}/>
-        <Route path="/my-listings" element={<MyListings />}/>
-
-
+        <Route path="/existing-owner-list" element={<ExistingOwnerList />} />
+        <Route path="/my-listings" element={<MyListings />} />
 
         {/* Redirect unknown routes */}
         <Route path="*" element={<Navigate to="/" replace />} />

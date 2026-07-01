@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
+
 import {
   PiArrowLeft,
   PiMapPin,
@@ -58,8 +61,19 @@ And because Home Finder connects users directly to landlords, we do not allow in
 If anyone requests an inspection fee while claiming to represent a listing on our platform, please treat it as suspicious and report the listing immediately. roads.`;
 
 
+const landlordData = {
+    name: "Jamiu Peters",
+    verified: true,
+    avatarUrl: null,
+    propertiesListed: 2,
+    memberSince: 2026,
+    phone: "+234 701 111 2222",
+    whatsapp: "+234 701 111 2222", // must be a string
+  };
+
 
 export default function PropertyDetails() {
+   const { id } = useParams();
   const [showAllAmenities, setShowAllAmenities] = useState(false);
   const [showFullVerification, setShowFullVerification] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
@@ -209,7 +223,7 @@ export default function PropertyDetails() {
             )}
             <button
               onClick={handleShare}
-              className="h-10 px-5 flex items-center gap-2 border border-[#C6C6C6] rounded-xs text-sm font-rethink font-normal text-[#0E0D0C] hover:bg-gray-50 transition-colors"
+              className="h-10 px-5 flex items-center gap-2 border border-[#C6C6C6] rounded-[3px] text-sm font-rethink font-normal text-[#0E0D0C] hover:bg-gray-50 transition-colors"
             >
               <PiShareNetwork size={18} />
               Share
@@ -218,7 +232,7 @@ export default function PropertyDetails() {
         </div>
 
         {/* LEFT COLUMN */}
-        <div className="grid grid-cols-[1fr_500px] gap-x-[70px] mt-10 pb-20">
+        <div className="grid grid-cols-[1fr_500px] gap-x-[90px] mt-10 pb-20">
 
           <div>
             {/* Description */}
@@ -288,7 +302,9 @@ export default function PropertyDetails() {
           </div>
 
           {/* RIGHT COLUMN */}
-          
+          <div className="sticky top-10 self-start">
+  <LandlordCard landlord={landlordData} isGuest={false} />
+</div>
         </div>
         </div>
       </main>
